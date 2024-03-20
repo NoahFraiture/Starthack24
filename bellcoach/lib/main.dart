@@ -1,4 +1,4 @@
-import 'package:bellcoach/profile_page.dart';
+import 'package:bellcoach/placeholder.dart';
 import 'package:bellcoach/top_bar_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:bellcoach/bottom_bar_custom.dart';
@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Navigator.push(
                 context,
                 PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) => const ProfilePage(),
+                    pageBuilder: (context, animation1, animation2) => const PlaceHolder(),
                     transitionDuration: Duration.zero,
                     reverseTransitionDuration: Duration.zero));
           }

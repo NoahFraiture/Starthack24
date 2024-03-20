@@ -1,4 +1,5 @@
 import 'package:bellcoach/colors.dart';
+import 'package:bellcoach/placeholder.dart';
 import 'package:bellcoach/profile_page.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
@@ -35,11 +36,11 @@ class _TopBarCustom extends State<TopBarCustom> {
                       reverseTransitionDuration: Duration.zero));
             },
           ),
-          Text("Welcome ${User.name}"),
+          Text("Welcome ${UserCustom.name}"),
           const Spacer(),
           Row(children: [
             Text(
-              User.credits.toString(),
+              UserCustom.credits.toString(),
             ),
             const Icon(Icons.diamond_outlined),
           ]),

@@ -1,10 +1,10 @@
-class User {
+class UserCustom {
   static String name = "user";
   static int credits = 0;
 
-  static final User _singleton = User._internal();
-  User._internal();
-  factory User() {
+  static final UserCustom _singleton = UserCustom._internal();
+  UserCustom._internal();
+  factory UserCustom() {
     return _singleton;
   }
 }
