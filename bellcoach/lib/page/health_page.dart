@@ -6,6 +6,8 @@ import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'chatbot_page.dart';
+
 class HealthPage extends StatefulWidget {
   const HealthPage({super.key});
 
@@ -34,10 +36,22 @@ class _HealthPage extends State<HealthPage> {
                           style: const TextStyle(color: Colors.white, fontSize: 14)),
                     ),
                   ),
-                  Image.asset(
-                    UserCustom.coach(),
-                    height: 206,
-                    width: 206,
+                  InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) => const ChatBot(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    },
+                    child: Image.asset(
+                      UserCustom.coach(),
+                      height: 206,
+                      width: 206,
+                    ),
                   )
                 ],
               ),

@@ -1,5 +1,4 @@
-import 'package:bellcoach/page/breathing.dart';
-import 'package:bellcoach/placeholder.dart';
+import 'package:bellcoach/page/chatbot_page.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +8,10 @@ import 'dart:math' show Random, min;
 import 'dart:developer' show log;
 import 'package:pedometer/pedometer.dart';
 import 'package:flutter_activity_recognition/flutter_activity_recognition.dart';
+import 'package:dart_openai/dart_openai.dart';
 
 void main() {
+  OpenAI.apiKey = "OPEN_AI_KEY";
   runApp(const MyApp());
 }
 
@@ -20,10 +21,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    // TODO : change with poll at the beginning of the day
     List<ActivityData> data = [];
     for (int i = 0; i < 7 * 8; i++) {
-      data.add(ActivityData(DateTime.now(), Random().nextInt(20)));
+      data.add(ActivityData(DateTime.now(), Random().nextInt(9)));
     }
 
     return MaterialApp(
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: colorScheme,
         useMaterial3: true,
       ),
-      home: const MyHomePage(), //Replace this with NotificationsPage
+      home: const ChatBot(), //Replace this with NotificationsPage
     );
   }
 }
@@ -142,8 +142,17 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
           ),
-          Transform.translate(
-            offset: const Offset(0, 0),
+          InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation1, animation2) => const ChatBot(),
+                  transitionDuration: Duration.zero,
+                  reverseTransitionDuration: Duration.zero,
+                ),
+              );
+            },
             child: Image.asset(
               UserCustom.coach(),
               height: 206,
