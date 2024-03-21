@@ -48,7 +48,10 @@ class _SocialPage extends State<SocialPage> {
                 child: Wrap(
                   children: [
                     for (People people in UserCustom.people)
-                      if (!people.isFriend && people.language == UserCustom.language)
+                      if (people.email != UserCustom.email &&
+                          !people.isFriend &&
+                          people.place == UserCustom.place &&
+                          people.language == UserCustom.language)
                         peopleTooltip(people),
                   ],
                 ),
