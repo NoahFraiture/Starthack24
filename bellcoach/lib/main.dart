@@ -1,7 +1,3 @@
-import 'package:bellcoach/page/notifications.dart';
-import 'package:bellcoach/widget/grid_widget.dart';
-import 'package:bellcoach/page/people_page.dart';
-import 'package:bellcoach/page/sport_page.dart';
 import 'package:bellcoach/placeholder.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
@@ -36,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: colorScheme,
         useMaterial3: true,
       ),
-      home: MyHomePage(), //Replace this with NotificationsPage
+      home: const MyHomePage(), //Replace this with NotificationsPage
     );
   }
 }
@@ -58,7 +54,7 @@ class DiscussionPainter extends CustomPainter {
     var paint = Paint()..color = color;
 
     var rect = Rect.fromLTWH(0, 0, size.width - 10, size.height);
-    var rrect = RRect.fromRectAndRadius(rect, Radius.circular(15));
+    var rrect = RRect.fromRectAndRadius(rect, const Radius.circular(15));
 
     canvas.drawRRect(rrect, paint);
 
@@ -112,18 +108,20 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.only(left: 16.0),
             child: CustomPaint(
               painter: DiscussionPainter(secondaryColor),
-              child: Padding(
-                padding: const EdgeInsets.all(30.0),
-                child: Text(
-                  'Welcome Noah !',
-                  style: TextStyle(color: Colors.white, fontSize: 24)
-                ),
+              child: const Padding(
+                padding: EdgeInsets.all(30.0),
+                child: Text('Welcome Noah !', style: TextStyle(color: Colors.white, fontSize: 24)),
               ),
             ),
           ),
-          Transform.translate( // Adding the Transform.translate widget here
-            offset: Offset(0, 10), // Moving the image 10 pixels down
-            child: Image.asset('assets/duolingo.png', height: 115, width: 115,),
+          Transform.translate(
+            // Adding the Transform.translate widget here
+            offset: const Offset(0, 10), // Moving the image 10 pixels down
+            child: Image.asset(
+              'assets/duolingo.png',
+              height: 115,
+              width: 115,
+            ),
           )
         ],
       ),
@@ -170,8 +168,8 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             buildWelcomeBubble(),
-            SizedBox(height: 90),
-           const Padding(
+            const SizedBox(height: 90),
+            const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
               child: Column(
                 children: <Widget>[
@@ -209,3 +207,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}

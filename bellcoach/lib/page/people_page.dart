@@ -1,4 +1,4 @@
-import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:developer';
 import 'package:bellcoach/widget/grid_widget.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
@@ -68,7 +68,7 @@ class _PeoplePage extends State<PeoplePage> {
                     ),
                     child: IconButton(
                       onPressed: () {
-                        Fluttertoast.showToast(msg: "Send gift to ${widget.people.name}");
+                        log("Send gift to ${widget.people.name}");
                       },
                       icon: const Icon(Icons.card_giftcard),
                     ),

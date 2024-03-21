@@ -45,57 +45,36 @@ class UserCustom {
   }
 
   // informations
-  static final People self = People(
-      "Self",
-      "assets/duolingo.png",
-      Place.brussels,
-      250,
-      false,
-      Language.french,
-      "noah@noah.com",
-      [],
-      [for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(20))],
-      [Notification(People(
-          "John Doe",
-          "assets/duolingo.png",
-          Place.brussels,
-          150,
-          true,
-          Language.english,
-          "john@doe.com",
-          ["I am looking for help with programming"],
-          [],
-          []), DateTime.now().subtract(Duration(hours: 1)), "You have a new friend request", NotificationType.friendRequest),
-        Notification(People(
-            "Jane Smith",
-            "assets/vic.png",
-            Place.madrid,
-            50,
-            false,
-            Language.french,
-            "jane@smith.com",
-            ["I love learning new languages"],
-            [],
-            []), DateTime.now().subtract(Duration(hours: 2)), "Objectives fulfilled", NotificationType.objectivesFulfilled),
-        Notification(People(
-            "Charlie Brown",
-            "assets/dede.png",
-            Place.budapest,
-            300,
-            true,
-            Language.spanish,
-            "charlie@brown.com",
-            ["Need recommendations for books"],
-            [],
-            []), DateTime.now().subtract(Duration(hours: 3)), "New worker arrived in the area", NotificationType.newWorkerArrived)]);
+  static final People self = People("Self", "assets/duolingo.png", Place.brussels, 250, false,
+      Language.french, "noah@noah.com", [], [
+    for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(20))
+  ], [
+    Notification(
+        People("John Doe", "assets/duolingo.png", Place.brussels, 150, true, Language.english,
+            "john@doe.com", ["I am looking for help with programming"], [], []),
+        DateTime.now().subtract(const Duration(hours: 1)),
+        "You have a new friend request",
+        NotificationType.friendRequest),
+    Notification(
+        People("Jane Smith", "assets/vic.png", Place.madrid, 50, false, Language.french,
+            "jane@smith.com", ["I love learning new languages"], [], []),
+        DateTime.now().subtract(const Duration(hours: 2)),
+        "Objectives fulfilled",
+        NotificationType.objectivesFulfilled),
+    Notification(
+        People("Charlie Brown", "assets/dede.png", Place.budapest, 300, true, Language.spanish,
+            "charlie@brown.com", ["Need recommendations for books"], [], []),
+        DateTime.now().subtract(const Duration(hours: 3)),
+        "New worker arrived in the "
+        "area",
+        NotificationType.newWorkerArrived)
+  ]);
   static bool connected = false;
   static Language language = self.language;
   static String name = self.name;
   static String email = self.email;
   static int credits = self.credits;
   static Place place = self.place;
-  static List<ActivityData> activity = self.activity;
-  static List<String> problems = self.problems;
   static List<Notification> notifications = self.notifications;
   static List<People> people = [
     self,
@@ -108,7 +87,8 @@ class UserCustom {
         Language.german,
         "bryce@noah.com",
         ["I lost my underwears, does anyone know how to get them back?", "I also lost my shoes"],
-        [],[]),
+        [],
+        []),
     People("Victoria", "assets/duolingo.png", Place.brussels, 0, true, Language.french,
         "victoria@noah.com", [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
@@ -119,13 +99,13 @@ class UserCustom {
           "deserunt mollit anim id est laborum."
     ], [], []),
     People("Delphine", "assets/duolingo.png", Place.budapest, 0, true, Language.english,
-        "delphine@noah.com", [], [],[]),
+        "delphine@noah.com", [], [], []),
     People("Manu", "assets/duolingo.png", Place.brussels, 0, false, Language.french,
         "manu@noah.com", ["I'm hungry, does someone have a pizza ?"], [], []),
     People("Machin", "assets/duolingo.png", Place.brussels, 0, false, Language.german,
-        "manu@noah.com", [], [],[]),
+        "manu@noah.com", [], [], []),
     People("machin", "assets/duolingo.png", Place.budapest, 0, false, Language.french,
-        "manu@noah.com", [], [],[]),
+        "manu@noah.com", [], [], []),
   ];
 
   static final UserCustom _singleton = UserCustom._internal();
@@ -203,7 +183,6 @@ class People {
   void removeNotification(int index) {
     notifications.removeAt(index);
   }
-
 }
 
 class ActivityData {
