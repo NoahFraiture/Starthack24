@@ -1,3 +1,4 @@
+import 'package:bellcoach/page/breathing.dart';
 import 'package:bellcoach/placeholder.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
