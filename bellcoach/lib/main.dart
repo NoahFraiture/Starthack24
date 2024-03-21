@@ -145,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
             // Adding the Transform.translate widget here
             offset: const Offset(0, 10), // Moving the image 10 pixels down
             child: Image.asset(
-              'assets/Coach2-1.gif',
+              UserCustom.coachPath,
               height: 115,
               width: 115,
             ),
