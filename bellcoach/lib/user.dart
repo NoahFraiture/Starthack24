@@ -44,7 +44,7 @@ class UserCustom {
   }
 
   // informations
-  static final People self = People("Self", "assets/duolingo.png", Place.brussels, 250, false,
+  static final People self = People("Noah", "assets/noah.png", Place.brussels, 250, false,
       Language.french, "noah@noah.com", [], [
     for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(20))
   ], [
@@ -106,7 +106,7 @@ class UserCustom {
     People("machin", "assets/duolingo.png", Place.budapest, 0, false, Language.french,
         "manu@noah.com", [], [], [],[],[]),
   ];
-  static List<String> earnedBadges = self.earnedBadges;
+  static List<String> earnedBadges = ["Walking 21 days", "No sugar","Sleep","Meditation"];
   static List<String> achievedGoals = self.achievedGoals;
 
   static final UserCustom _singleton = UserCustom._internal();

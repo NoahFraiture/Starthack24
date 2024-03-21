@@ -127,27 +127,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Padding buildWelcomeBubble() {
     var welcome = Padding(
-      padding: const EdgeInsets.only(top: 40),
+      padding: const EdgeInsets.only(top: 20),   // reduced top padding
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 16.0),
+            padding: const EdgeInsets.only(left: 7.0), // reduced left padding
             child: CustomPaint(
               painter: DiscussionPainter(secondaryColor),
               child: Padding(
-                padding: EdgeInsets.all(30.0),
-                child: Text('Welcome ${UserCustom.name} !', style: TextStyle(color: Colors.white, fontSize: 24)),
+                padding: EdgeInsets.all(15.0), // reduce values from 30 to 20
+                child: Text('Welcome ${UserCustom.name} !', style: TextStyle(color: Colors.white, fontSize: 20)),  // reduced fontSize
               ),
             ),
           ),
           Transform.translate(
-            // Adding the Transform.translate widget here
-            offset: const Offset(0, 10), // Moving the image 10 pixels down
+            offset: const Offset(-3, 6),
             child: Image.asset(
               'assets/Coach2-1.gif',
-              height: 115,
-              width: 115,
+              height: 206, // increased height and width of coach
+              width: 206,
             ),
           )
         ],
@@ -155,18 +154,46 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     return welcome;
   }
-  ListView displayBadges() {
-    List<String> last4Badges = UserCustom.earnedBadges.reversed.toList().take(4).toList();
 
-    return ListView.builder(
-      itemCount: last4Badges.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          leading: Icon(Icons.badge), // replace with your badge icon
-          title: Text(last4Badges[index]),
-        );
-      },
-    );
+  Widget displayBadges() {
+    List<String> last4Badges = UserCustom.earnedBadges.reversed.toList().take(4).toList();
+    if(last4Badges.isEmpty) {
+      return ListView(
+        shrinkWrap: true,
+        children: const <Widget>[
+          ListTile(
+            leading: Icon(Icons.sentiment_very_dissatisfied),
+            title: Text('No badges earned yet'),
+          ),
+        ],
+      );
+    } else {
+      return Wrap(
+        alignment: WrapAlignment.spaceAround,
+        children: last4Badges.map((badgeName) {
+          String badgeImage = 'assets/meditation.png';
+
+          if (badgeName == 'Meditation') {
+            badgeImage = 'assets/meditation.png';
+          } else if (badgeName == 'No Sugar') {
+            badgeImage = 'assets/noSugar.png';
+          } else if (badgeName == 'Sleep'){
+            badgeImage = 'assets/sleep.png';
+          } else if (badgeName == 'Walking 21 days'){
+            badgeImage = 'assets/Steps21days.png';
+          }
+
+          return Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Image.asset(
+              badgeImage,
+              width: 90,
+              fit: BoxFit.cover,
+            ),
+          );
+        }).toList(),
+      );
+    }
   }
 
   @override
@@ -210,13 +237,13 @@ class _MyHomePageState extends State<MyHomePage> {
             buildWelcomeBubble(),
             const SizedBox(height: 20),
             Padding(
-              padding: EdgeInsets.all(10),   // Increase this value for more space
+              padding: const EdgeInsets.all(10),   // Increase this value for more space
               child: Center(
                 child: Padding(
-                  padding: EdgeInsets.all(10),  // Increase this value for more space
+                  padding: const EdgeInsets.all(10),  // Increase this value for more space
                   child: Text(
                     getRandomQuote(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 15,
                       color: accentColor,
                       fontStyle: FontStyle.italic,
@@ -225,7 +252,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            displayBadges()
+            Container(
+              height: 100,
+              child: displayBadges(), // Your ListView.builder
+            )
           ],
         ),
       ),
