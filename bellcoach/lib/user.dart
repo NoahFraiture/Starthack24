@@ -1,17 +1,37 @@
+import 'dart:math';
+
 class UserCustom {
-  static final People _self = People("Self", "assets/duolingo.png", Place.brussels, 250, false,
-      Language.french, "noah@noah.com", []);
+  static final People self = People(
+      "Self",
+      "assets/duolingo.png",
+      Place.brussels,
+      250,
+      false,
+      Language.french,
+      "noah@noah.com",
+      [],
+      [for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(20))]);
   static bool connected = false;
-  static Language language = _self.language;
-  static String name = _self.name;
-  static String email = _self.email;
-  static int credits = _self.credits;
-  static Place place = _self.place;
+  static Language language = self.language;
+  static String name = self.name;
+  static String email = self.email;
+  static int credits = self.credits;
+  static Place place = self.place;
+  static List<ActivityData> activity = self.activity;
+  static List<String> problems = self.problems;
 
   static List<People> people = [
-    _self,
-    People("Bryce", "assets/duolingo.png", Place.madrid, 0, true, Language.german, "bryce@noah.com",
-        ["I lost my underwears, does anyone know how to get them back?", "I also lost my shoes"]),
+    self,
+    People(
+        "Bryce",
+        "assets/duolingo.png",
+        Place.madrid,
+        0,
+        true,
+        Language.german,
+        "bryce@noah.com",
+        ["I lost my underwears, does anyone know how to get them back?", "I also lost my shoes"],
+        []),
     People("Victoria", "assets/duolingo.png", Place.brussels, 0, true, Language.french,
         "victoria@noah.com", [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
@@ -20,19 +40,19 @@ class UserCustom {
           "irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
           "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia "
           "deserunt mollit anim id est laborum."
-    ]),
+    ], []),
     People("Delphine", "assets/duolingo.png", Place.budapest, 0, true, Language.english,
-        "delphine@noah.com", []),
+        "delphine@noah.com", [], []),
     People("Manu", "assets/duolingo.png", Place.brussels, 0, false, Language.french,
-        "manu@noah.com", ["I'm hungry, does someone have a pizza ?"]),
+        "manu@noah.com", ["I'm hungry, does someone have a pizza ?"], []),
     People("Machin", "assets/duolingo.png", Place.brussels, 0, false, Language.german,
-        "manu@noah.com", []),
+        "manu@noah.com", [], []),
     People("machin", "assets/duolingo.png", Place.budapest, 0, false, Language.french,
-        "manu@noah.com", []),
+        "manu@noah.com", [], []),
   ];
 
   static void addSelfMessage(String message) {
-    _self.problems.add(message);
+    self.problems.add(message);
   }
 
   static final UserCustom _singleton = UserCustom._internal();
@@ -73,17 +93,25 @@ enum Language { english, french, spanish, german }
 class People {
   final Language language;
   final String email;
-  final bool isFriend;
+  bool isFriend;
   final String name;
   final String picturePath;
   final Place place;
   final int credits;
   List<String> problems;
+  List<ActivityData> activity;
 
   People(this.name, this.picturePath, this.place, this.credits, this.isFriend, this.language,
-      this.email, this.problems);
+      this.email, this.problems, this.activity);
 
   void addProblem(String problem) {
     problems.add(problem);
   }
+}
+
+class ActivityData {
+  final DateTime date;
+  final int value;
+
+  ActivityData(this.date, this.value);
 }

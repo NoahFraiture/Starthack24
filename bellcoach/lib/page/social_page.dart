@@ -1,4 +1,4 @@
-import 'package:bellcoach/top_bar_custom.dart';
+import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
 
@@ -87,7 +87,10 @@ Widget friendInfo(People people) {
               children: [Text("Score : ${people.credits}"), const Icon(Icons.diamond_outlined)],
             ),
             Row(
-              children: [const Icon(Icons.map), Text(UserCustom.placeToString(people.place))],
+              children: [
+                const Icon(Icons.add_location),
+                Text(UserCustom.placeToString(people.place))
+              ],
             )
           ],
         ),

@@ -1,4 +1,4 @@
-import 'package:bellcoach/bottom_bar_custom.dart';
+import 'package:bellcoach/widget/bottom_bar_custom.dart';
 import 'package:flutter/material.dart';
 
 class PlaceHolder extends StatefulWidget {
