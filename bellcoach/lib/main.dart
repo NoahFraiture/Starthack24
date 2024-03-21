@@ -1,3 +1,4 @@
+import 'package:bellcoach/page/notifications.dart';
 import 'package:bellcoach/widget/grid_widget.dart';
 import 'package:bellcoach/page/people_page.dart';
 import 'package:bellcoach/placeholder.dart';
@@ -23,12 +24,13 @@ class MyApp extends StatelessWidget {
       data.add(ActivityData(DateTime.now(), Random().nextInt(20)));
     }
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: colorScheme,
-          useMaterial3: true,
-        ),
-        home: PeoplePage(people: UserCustom.self));
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: colorScheme,
+        useMaterial3: true,
+      ),
+      home: NotificationsPage(), //Replace this with NotificationsPage
+    );
   }
 }
 
