@@ -50,24 +50,25 @@ class UserCustom {
   ], [
     Notification(
         People("John Doe", "assets/duolingo.png", Place.brussels, 150, true, Language.english,
-            "john@doe.com", ["I am looking for help with programming"], [], [],[],[]),
+            "john@doe.com", ["I am looking for help with programming"], [], [],[],[], Gender.boy),
         DateTime.now().subtract(const Duration(hours: 1)),
         "You have a new friend request",
         NotificationType.friendRequest),
     Notification(
         People("Jane Smith", "assets/vic.png", Place.madrid, 50, false, Language.french,
-            "jane@smith.com", ["I love learning new languages"], [], [],[],[]),
+            "jane@smith.com", ["I love learning new languages"], [], [],[],[], Gender.girl),
         DateTime.now().subtract(const Duration(hours: 2)),
         "Objectives fulfilled",
         NotificationType.objectivesFulfilled),
     Notification(
         People("Charlie Brown", "assets/dede.png", Place.budapest, 300, true, Language.spanish,
-            "charlie@brown.com", ["Need recommendations for books"], [], [],[],[]),
+            "charlie@brown.com", ["Need recommendations for books"], [], [],[],[], Gender.girl),
         DateTime.now().subtract(const Duration(hours: 3)),
         "New worker arrived in the "
         "area",
         NotificationType.newWorkerArrived)
-  ],[],[]);
+  ],[],[], Gender.girl);
+
   static bool connected = false;
   static Language language = self.language;
   static String name = self.name;
@@ -75,6 +76,10 @@ class UserCustom {
   static int credits = self.credits;
   static Place place = self.place;
   static List<Notification> notifications = self.notifications;
+  static Gender coachGender = self.coachGender; // 1 or 2
+  static int coachLvl = self.coachLvl; // 1 to 3
+  static String coachPath = self.getCoachPath();
+
   static List<People> people = [
     self,
     People(
@@ -87,8 +92,8 @@ class UserCustom {
         "bryce@noah.com",
         ["I lost my underwears, does anyone know how to get them back?", "I also lost my shoes"],
         [],
-        [],[],[]),
-    People("Victoria", "assets/duolingo.png", Place.brussels, 0, true, Language.french,
+        [],[],[], Gender.boy),
+    People("Victoria", "assets/vic.png", Place.brussels, 0, true, Language.french,
         "victoria@noah.com", [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
           "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
@@ -96,15 +101,15 @@ class UserCustom {
           "irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
           "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia "
           "deserunt mollit anim id est laborum."
-    ], [], [],[],[]),
-    People("Delphine", "assets/duolingo.png", Place.budapest, 0, true, Language.english,
-        "delphine@noah.com", [], [], [],[],[]),
-    People("Manu", "assets/duolingo.png", Place.brussels, 0, false, Language.french,
-        "manu@noah.com", ["I'm hungry, does someone have a pizza ?"], [], [],[],[]),
+    ], [], [],[],[], Gender.girl),
+    People("Delphine", "assets/dede.png", Place.budapest, 0, true, Language.english,
+        "delphine@noah.com", [], [], [],[],[], Gender.girl),
+    People("Manu", "assets/manu.png", Place.brussels, 0, false, Language.french,
+        "manu@noah.com", ["I'm hungry, does someone have a pizza ?"], [], [],[],[], Gender.boy),
     People("Machin", "assets/duolingo.png", Place.brussels, 0, false, Language.german,
-        "manu@noah.com", [], [], [],[],[]),
+        "manu@noah.com", [], [], [],[],[], Gender.girl),
     People("machin", "assets/duolingo.png", Place.budapest, 0, false, Language.french,
-        "manu@noah.com", [], [], [],[],[]),
+        "manu@noah.com", [], [], [],[],[], Gender.boy),
   ];
   static List<String> earnedBadges = ["Walking 21 days", "No sugar","Sleep","Meditation"];
   static List<String> achievedGoals = self.achievedGoals;
@@ -139,6 +144,8 @@ class UserCustom {
     }
   }
 
+  String getCoachPath(){ return self.getCoachPath();}
+
 }
 
 class Walk {
@@ -159,6 +166,8 @@ enum Place { madrid, budapest, brussels }
 
 enum Language { english, french, spanish, german }
 
+enum Gender { boy, girl }
+
 class People {
   final Language language;
   final String email;
@@ -172,9 +181,11 @@ class People {
   List<Notification> notifications;
   List<String> achievedGoals;
   List<String> earnedBadges;
+  Gender coachGender; // 1 or 2
+  int coachLvl=1; // 1 to 3
 
   People(this.name, this.picturePath, this.place, this.credits, this.isFriend, this.language,
-      this.email, this.problems, this.activity, this.notifications, this.achievedGoals, this.earnedBadges);
+      this.email, this.problems, this.activity, this.notifications, this.achievedGoals, this.earnedBadges, this.coachGender);
 
   void addProblem(String problem) {
     problems.add(problem);
@@ -193,6 +204,13 @@ class People {
 
   void addEarnedBadge(String badge) {
     earnedBadges.add(badge);
+  }
+
+  String getCoachPath(){
+    if (this.coachGender == Gender.boy){
+      return "assets/Coach1-{$coachLvl}.gif";
+    }
+    return "assets/Coach2-{$coachLvl}.gif";
   }
 }
 

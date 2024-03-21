@@ -144,8 +144,8 @@ class _MyHomePageState extends State<MyHomePage> {
           Transform.translate(
             offset: const Offset(-3, 6),
             child: Image.asset(
-              'assets/Coach2-1.gif',
-              height: 206, // increased height and width of coach
+              UserCustom.coachPath,
+              height: 206,
               width: 206,
             ),
           )
