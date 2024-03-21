@@ -137,7 +137,8 @@ class _MyHomePageState extends State<MyHomePage> {
               painter: DiscussionPainter(secondaryColor),
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
-                child: Text('Welcome ${UserCustom.name} ! \nYou\'re doing such\na great job !', style: TextStyle(color: Colors.white, fontSize: 14)),
+                child: Text('Welcome ${UserCustom.name} ! \nYou\'re doing such\na great job !',
+                    style: TextStyle(color: Colors.white, fontSize: 14)),
               ),
             ),
           ),
@@ -154,9 +155,10 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     return welcome;
   }
+
   Widget displayBadges() {
     List<String> last4Badges = UserCustom.earnedBadges.reversed.toList().take(4).toList();
-    if(last4Badges.isEmpty) {
+    if (last4Badges.isEmpty) {
       return ListView(
         shrinkWrap: true,
         children: const <Widget>[
@@ -176,9 +178,9 @@ class _MyHomePageState extends State<MyHomePage> {
             badgeImage = 'assets/meditation.png';
           } else if (badgeName == 'No Sugar') {
             badgeImage = 'assets/noSugar.png';
-          } else if (badgeName == 'Sleep'){
+          } else if (badgeName == 'Sleep') {
             badgeImage = 'assets/sleep.png';
-          } else if (badgeName == 'Walking 21 days'){
+          } else if (badgeName == 'Walking 21 days') {
             badgeImage = 'assets/Steps21days.png';
           }
 
@@ -236,10 +238,10 @@ class _MyHomePageState extends State<MyHomePage> {
             buildWelcomeBubble(),
             const SizedBox(height: 20),
             Padding(
-              padding: const EdgeInsets.all(10),   // Increase this value for more space
+              padding: const EdgeInsets.all(10), // Increase this value for more space
               child: Center(
                 child: Padding(
-                  padding: const EdgeInsets.all(10),  // Increase this value for more space
+                  padding: const EdgeInsets.all(10), // Increase this value for more space
                   child: Text(
                     getRandomQuote(),
                     style: const TextStyle(
@@ -251,7 +253,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ),
-            Container(
+            SizedBox(
               height: 100,
               child: displayBadges(), // Your ListView.builder
             ),
@@ -259,17 +261,16 @@ class _MyHomePageState extends State<MyHomePage> {
               margin: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
               child: Column(
                 children: <Widget>[
-                  const Text(
-                    'Your Steps of the Day',
-                    style: TextStyle(color: primaryFgColor, fontSize: 20)
-                  ),
-              SizedBox(
-                height: 9, // Define the height of the progress bar
-                child: LinearProgressIndicator(
-                    value: min(UserCustom.currentSteps / 10000, 1),  // we ensure value is between 0 and 1 by using min
-                    color: secondaryColor,
-                    backgroundColor: Colors.grey[300],
-                ),
+                  const Text('Your Steps of the Day',
+                      style: TextStyle(color: primaryFgColor, fontSize: 20)),
+                  SizedBox(
+                    height: 9, // Define the height of the progress bar
+                    child: LinearProgressIndicator(
+                      value: min(UserCustom.currentSteps / 10000,
+                          1), // we ensure value is between 0 and 1 by using min
+                      color: secondaryColor,
+                      backgroundColor: Colors.grey[300],
+                    ),
                   ),
                   const SizedBox(height: 10.0),
                   Text('${UserCustom.currentSteps} / 10000 steps'),
@@ -284,13 +285,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Glass of Water Drunk',
                     style: TextStyle(color: primaryFgColor, fontSize: 20),
                   ),
-              SizedBox(
-                height: 9, // Define the height of the progress bar
-                child: LinearProgressIndicator(
-                    value: min(UserCustom.water / 8, 1),  // we ensure value is between 0 and 1 with min
-                    color: secondaryColor,
-                    backgroundColor: Colors.grey[300],
-                ),
+                  SizedBox(
+                    height: 9, // Define the height of the progress bar
+                    child: LinearProgressIndicator(
+                      value: min(
+                          UserCustom.water / 8, 1), // we ensure value is between 0 and 1 with min
+                      color: secondaryColor,
+                      backgroundColor: Colors.grey[300],
+                    ),
                   ),
                   const SizedBox(height: 10.0),
                   Text('${UserCustom.water} / 8 glasses of water'),
