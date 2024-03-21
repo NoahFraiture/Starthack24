@@ -40,7 +40,6 @@ class NotificationsPageState extends State<NotificationsPage> {
                       context,
                       notification.notifRedirect()
                       );
-                      
                   },
                   child : ListTile(
                     leading: Image.asset(notification.sender.picturePath), // PicturePath from the sender

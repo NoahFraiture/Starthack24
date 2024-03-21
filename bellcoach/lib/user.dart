@@ -51,7 +51,7 @@ class UserCustom {
   }
 
   // informations
-  static final People self = People("Noah", "assets/noah.png", Place.brussels, 250, false,
+  static final People self = People("Noah", "assets/noah.png", Place.brussels, 500, false,
       Language.french, "noah@noah.com", [], [
     for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(20))
   ], [
@@ -175,6 +175,8 @@ enum Language { english, french, spanish, german }
 
 enum Gender { boy, girl }
 
+enum Integer {a, b, c, d, e, f, g, h}
+
 class People {
   final Language language;
   final String email;
@@ -214,7 +216,7 @@ class People {
   }
 
   String getCoachPath(){
-    if (this.coachGender == Gender.boy){
+    if (coachGender == Gender.boy){
       return "assets/Coach1-$coachLvl.gif";
     }
     return "assets/Coach2-$coachLvl.gif";
