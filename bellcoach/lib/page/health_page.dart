@@ -7,6 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'chatbot_page.dart';
+import 'food.dart';
 
 class HealthPage extends StatefulWidget {
   const HealthPage({super.key});
@@ -160,7 +161,7 @@ class _HealthPage extends State<HealthPage> {
                         Navigator.push(
                           context,
                           PageRouteBuilder(
-                            pageBuilder: (context, animation1, animation2) => const Placeholder(),
+                            pageBuilder: (context, animation1, animation2) => FoodPage(),
                             transitionDuration: Duration.zero,
                             reverseTransitionDuration: Duration.zero,
                           ),
