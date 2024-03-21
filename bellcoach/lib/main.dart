@@ -1,8 +1,12 @@
+import 'package:bellcoach/page/people_page.dart';
+import 'package:bellcoach/page/sport_page.dart';
 import 'package:bellcoach/placeholder.dart';
-import 'package:bellcoach/top_bar_custom.dart';
+import 'package:bellcoach/widget/top_bar_custom.dart';
+import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
-import 'package:bellcoach/bottom_bar_custom.dart';
-import 'package:bellcoach/colors.dart';
+import 'package:bellcoach/widget/bottom_bar_custom.dart';
+import 'package:bellcoach/ressources/colors.dart';
+import 'dart:math';
 
 void main() {
   runApp(const MyApp());
@@ -14,14 +18,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    List<ActivityData> data = [];
+    for (int i = 0; i < 7 * 8; i++) {
+      data.add(ActivityData(DateTime.now(), Random().nextInt(20)));
+    }
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: colorScheme,
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: colorScheme,
+          useMaterial3: true,
+        ),
+        home: SportPage());
   }
 }
 

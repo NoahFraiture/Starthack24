@@ -1,8 +1,8 @@
-import 'package:bellcoach/profile_page.dart';
+import 'package:bellcoach/page/profile_page.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 class TopBarCustom extends StatefulWidget implements PreferredSizeWidget {
   const TopBarCustom({super.key});
