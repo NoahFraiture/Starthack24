@@ -34,7 +34,6 @@ class _TopBarCustom extends State<TopBarCustom> {
                       reverseTransitionDuration: Duration.zero));
             },
           ),
-          Text("Welcome"),
           const Spacer(),
           Row(children: [
             Text(
