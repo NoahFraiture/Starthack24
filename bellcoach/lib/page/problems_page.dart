@@ -1,3 +1,4 @@
+import 'package:bellcoach/widget/bottom_bar_custom.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
@@ -13,51 +14,61 @@ class _Problems extends State<Problems> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const TopBarCustom(),
-        body: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Expanded(
-                child: ListView(children: [
-                  for (People people in UserCustom.people)
-                    for (String problem in people.problems) question(people, problem),
-                ]),
-              ),
-            ],
-          ),
+      appBar: const TopBarCustom(),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ListView(children: [
+                for (People people in UserCustom.people)
+                  for (String problem in people.problems) question(people, problem),
+              ]),
+            ),
+          ],
         ),
-        floatingActionButton: FloatingActionButton(
-            child: const Icon(Icons.add),
-            onPressed: () {
-              showDialog(
-                  context: context,
-                  builder: (BuildContext context) {
-                    final TextEditingController problemController = TextEditingController();
+      ),
+      floatingActionButton: FloatingActionButton(
+          child: const Icon(Icons.add),
+          foregroundColor: Theme.of(context).colorScheme.onBackground,
+          backgroundColor: Theme.of(context).colorScheme.tertiary,
+          onPressed: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  final TextEditingController problemController = TextEditingController();
 
-                    return AlertDialog(
-                        title: const Text('Add problem'),
-                        content: TextField(
-                          controller: problemController,
-                        ),
-                        actions: [
-                          TextButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text('Cancel')),
-                          TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  UserCustom.addSelfMessage(problemController.text);
-                                });
-                                Navigator.pop(context);
-                              },
-                              child: const Text('Add'))
-                        ]);
-                  });
-            }));
+                  return AlertDialog(
+                      title: const Text('Add problem'),
+                      content: TextField(
+                        controller: problemController,
+                      ),
+                      actions: [
+                        TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'Cancel',
+                              style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                            )),
+                        TextButton(
+                            onPressed: () {
+                              setState(() {
+                                UserCustom.addSelfMessage(problemController.text);
+                              });
+                              Navigator.pop(context);
+                            },
+                            child: Text(
+                              'Add',
+                              style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+                            ))
+                      ]);
+                });
+          }),
+      bottomNavigationBar: const BottomBarCustom(pageID: PageID.factory),
+    );
   }
 
   Container question(People people, String problem) {
@@ -86,10 +97,10 @@ class _Problems extends State<Problems> {
                 child: Container(
                     height: 50,
                     width: 50,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: AssetImage("assets/duolingo.png"),
+                          image: AssetImage(people.picturePath),
                           fit: BoxFit.cover,
                         )))),
           ]),

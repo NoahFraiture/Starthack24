@@ -25,6 +25,7 @@ class UserCustom {
   static List<Sleep> sleeps = [];
   static void addSleep(Sleep sleep) {
     sleeps.add(sleep);
+    people[0] = self;
   }
 
   // Last date you walked to reset your steps every day
@@ -33,6 +34,7 @@ class UserCustom {
   static List<Walk> walks = [];
   static void addWalk(Walk walk) {
     walks.add(walk);
+    people[0] = self;
   }
 
   // green wall
@@ -42,6 +44,8 @@ class UserCustom {
   static List<String> problems = self.problems;
   static void addSelfMessage(String message) {
     self.problems.add(message);
+    self.name = name;
+    people[0] = self;
   }
 
   // informations
@@ -86,10 +90,10 @@ class UserCustom {
         true,
         Language.german,
         "bryce@noah.com",
-        ["I lost my underwears, does anyone know how to get them back?", "I also lost my shoes"],
+        ["I lost my stuffs, does anyone know how to get them back?", "I also lost my badge"],
         [],
         []),
-    People("Victoria", "assets/duolingo.png", Place.brussels, 0, true, Language.french,
+    People("Victoria", "assets/vic.png", Place.brussels, 0, true, Language.french,
         "victoria@noah.com", [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
           "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
@@ -98,7 +102,7 @@ class UserCustom {
           "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia "
           "deserunt mollit anim id est laborum."
     ], [], []),
-    People("Delphine", "assets/duolingo.png", Place.budapest, 0, true, Language.english,
+    People("Delphine", "assets/dede.png", Place.budapest, 0, true, Language.english,
         "delphine@noah.com", [], [], []),
     People("Manu", "assets/duolingo.png", Place.brussels, 0, false, Language.french,
         "manu@noah.com", ["I'm hungry, does someone have a pizza ?"], [], []),
@@ -161,7 +165,7 @@ class People {
   final Language language;
   final String email;
   bool isFriend;
-  final String name;
+  String name;
   final String picturePath;
   final Place place;
   final int credits;

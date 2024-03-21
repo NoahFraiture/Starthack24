@@ -65,7 +65,10 @@ class _TimerPage extends State<TimerPage> with TickerProviderStateMixin {
                         _isTimerRunning = true;
                       });
                     },
-              child: Text(_isTimerRunning ? 'Stop' : 'Start'),
+              child: Text(
+                _isTimerRunning ? 'Stop' : 'Start',
+                style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+              ),
             ),
           ],
         ),

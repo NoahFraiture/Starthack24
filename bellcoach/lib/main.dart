@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-  final int idPage = 0;
+  final int idPage = -1;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -192,19 +192,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomBarCustom(
-        index: 0,
-        onTap: (int value) {
-          if (value != widget.idPage) {
-            Navigator.push(
-                context,
-                PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) => const PlaceHolder(),
-                    transitionDuration: Duration.zero,
-                    reverseTransitionDuration: Duration.zero));
-          }
-        },
-      ),
+      bottomNavigationBar: const BottomBarCustom(pageID: PageID.home),
     );
   }
 }

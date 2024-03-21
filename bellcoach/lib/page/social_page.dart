@@ -1,3 +1,4 @@
+import 'package:bellcoach/widget/bottom_bar_custom.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,6 @@ class _SocialPage extends State<SocialPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SearchBar(
-                controller: textController,
-              ),
               const SizedBox(height: 20.0),
               const Text(
                 "Your friends",
@@ -61,6 +59,7 @@ class _SocialPage extends State<SocialPage> {
         ),
       ),
       appBar: const TopBarCustom(),
+      bottomNavigationBar: const BottomBarCustom(pageID: PageID.chat),
     );
   }
 }

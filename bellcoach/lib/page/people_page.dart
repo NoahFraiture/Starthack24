@@ -2,9 +2,7 @@ import 'dart:developer';
 import 'package:bellcoach/widget/grid_widget.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class PeoplePage extends StatefulWidget {
   final People people;
