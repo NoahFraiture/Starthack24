@@ -5,6 +5,7 @@ import 'package:bellcoach/widget/bottom_bar_custom.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'chatbot_page.dart';
 import 'food.dart';
@@ -56,63 +57,69 @@ class _HealthPage extends State<HealthPage> {
                   )
                 ],
               ),
-              Padding(
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: [
-                        CircularProgressIndicator(
-                          value: (UserCustom.sleeps.lastOrNull?.duration.inHours ?? 0) / 8,
-                          backgroundColor: Theme.of(context).colorScheme.onBackground,
-                          color: Theme.of(context).colorScheme.tertiary,
-                          strokeWidth: 5,
-                        ),
-                        const Icon(Icons.cloud, size: 20),
-                      ],
-                    ),
-                    const SizedBox(width: 10),
-                    Column(
-                      children: [
-                        Row(children: [
-                          const Icon(Icons.bed),
-                          Text(
-                              "${(UserCustom.sleeps.lastOrNull?.date.hour ?? 0) - (UserCustom.sleeps.lastOrNull?.duration.inHours ?? 0)}")
-                        ]),
-                        Row(children: [
-                          const Icon(Icons.alarm),
-                          Text("${UserCustom.sleeps.lastOrNull?.date.hour ?? 0}")
-                        ]),
-                      ],
-                    ),
-                    const SizedBox(width: 10),
-                    Text("${UserCustom.sleeps.lastOrNull?.duration.inHours ?? 0} Hours"),
-                  ],
+              Transform.scale(
+                scale: 1.2,
+                child: Padding(
+                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.2),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Stack(
+                        alignment: AlignmentDirectional.center,
+                        children: [
+                          CircularProgressIndicator(
+                            value: (UserCustom.sleeps.lastOrNull?.duration.inHours ?? 0) / 8,
+                            backgroundColor: Theme.of(context).colorScheme.onBackground,
+                            color: Theme.of(context).colorScheme.tertiary,
+                            strokeWidth: 5,
+                          ),
+                          const Icon(Icons.cloud, size: 20),
+                        ],
+                      ),
+                      const SizedBox(width: 10),
+                      Column(
+                        children: [
+                          Row(children: [
+                            const Icon(Icons.bed),
+                            Text(
+                                "${((UserCustom.sleeps.lastOrNull?.date.hour ?? 0) - (UserCustom.sleeps.lastOrNull?.duration.inHours ?? 0) + 24) % 24}H")
+                          ]),
+                          Row(children: [
+                            const Icon(Icons.alarm),
+                            Text("${UserCustom.sleeps.lastOrNull?.date.hour ?? 0}H")
+                          ]),
+                        ],
+                      ),
+                      const SizedBox(width: 10),
+                      Text("${UserCustom.sleeps.lastOrNull?.duration.inHours ?? 0} Hours"),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 20),
-              Padding(
-                padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Stack(
-                      alignment: AlignmentDirectional.center,
-                      children: [
-                        CircularProgressIndicator(
-                          value: UserCustom.currentSteps / 20000,
-                          backgroundColor: Theme.of(context).colorScheme.onBackground,
-                          color: Theme.of(context).colorScheme.tertiary,
-                          strokeWidth: 5,
-                        ),
-                        const Icon(Icons.directions_walk, size: 20),
-                      ],
-                    ),
-                    const SizedBox(width: 10),
-                    Text("${UserCustom.currentSteps} steps today"),
-                  ],
+              Transform.scale(
+                scale: 1.2,
+                child: Padding(
+                  padding: EdgeInsets.only(left: MediaQuery.of(context).size.width * 0.2),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Stack(
+                        alignment: AlignmentDirectional.center,
+                        children: [
+                          CircularProgressIndicator(
+                            value: UserCustom.currentSteps / 20000,
+                            backgroundColor: Theme.of(context).colorScheme.onBackground,
+                            color: Theme.of(context).colorScheme.tertiary,
+                            strokeWidth: 5,
+                          ),
+                          const Icon(Icons.directions_walk, size: 20),
+                        ],
+                      ),
+                      const SizedBox(width: 10),
+                      Text("${UserCustom.currentSteps} steps today"),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 50),

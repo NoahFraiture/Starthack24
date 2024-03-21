@@ -21,7 +21,7 @@ class UserCustom {
 
   // data
   static DateTime lastAwake = DateTime.now();
-  static List<Sleep> sleeps = [];
+  static List<Sleep> sleeps = [Sleep(DateTime.now(), const Duration(hours: 7))];
   static void addSleep(Sleep sleep) {
     sleeps.add(sleep);
     people[0] = self;
