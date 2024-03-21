@@ -50,31 +50,82 @@ class UserCustom {
     people[0] = self;
   }
 
+  // coach
+  static String coach() {
+    return self.getCoachPath();
+  }
+
   // informations
-  static final People self = People("Noah", "assets/noah.png", Place.brussels, 250, false,
-      Language.french, "noah@noah.com", [], [
-    for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(20))
-  ], [
-    Notification(
-        People("John Doe", "assets/duolingo.png", Place.brussels, 150, true, Language.english,
-            "john@doe.com", ["I am looking for help with programming"], [], [],[],[], Gender.boy),
-        DateTime.now().subtract(const Duration(hours: 1)),
-        "You have a new friend request",
-        NotificationType.friendRequest),
-    Notification(
-        People("Victoria Van Rillaer", "assets/vic.png", Place.madrid, 50, false, Language.french,
-            "jane@smith.com", ["I love learning new languages"], [], [],[],[], Gender.girl),
-        DateTime.now().subtract(const Duration(hours: 2)),
-        "Objectives fulfilled",
-        NotificationType.objectivesFulfilled),
-    Notification(
-        People("Delphine van Rossum", "assets/dede.png", Place.budapest, 300, true, Language.spanish,
-            "charlie@brown.com", ["Need recommendations for books"], [], [],[],[], Gender.girl),
-        DateTime.now().subtract(const Duration(hours: 3)),
-        "New worker arrived in the "
-        "area",
-        NotificationType.newWorkerArrived)
-  ],[],[], Gender.girl);
+  static final People self = People(
+      "Noah",
+      "assets/noah.png",
+      Place.brussels,
+      500,
+      false,
+      Language.french,
+      "noah@noah.com",
+      [],
+      [for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(9))],
+      [
+        Notification(
+            People(
+                "John Doe",
+                "assets/duolingo.png",
+                Place.brussels,
+                150,
+                true,
+                Language.english,
+                "john@doe.com",
+                ["I am looking for help with programming"],
+                [],
+                [],
+                [],
+                [],
+                Gender.boy),
+            DateTime.now().subtract(const Duration(hours: 1)),
+            "You have a new friend request",
+            NotificationType.friendRequest),
+        Notification(
+            People(
+                "Victoria Van Rillaer",
+                "assets/vic.png",
+                Place.madrid,
+                50,
+                false,
+                Language.french,
+                "jane@smith.com",
+                ["I love learning new languages"],
+                [],
+                [],
+                [],
+                [],
+                Gender.girl),
+            DateTime.now().subtract(const Duration(hours: 2)),
+            "Objectives fulfilled",
+            NotificationType.objectivesFulfilled),
+        Notification(
+            People(
+                "Delphine van Rossum",
+                "assets/dede.png",
+                Place.budapest,
+                300,
+                true,
+                Language.spanish,
+                "charlie@brown.com",
+                ["Need recommendations for books"],
+                [],
+                [],
+                [],
+                [],
+                Gender.girl),
+            DateTime.now().subtract(const Duration(hours: 3)),
+            "New worker arrived in the "
+            "area",
+            NotificationType.newWorkerArrived)
+      ],
+      [],
+      [],
+      Gender.girl);
 
   static bool connected = false;
   static Language language = self.language;
@@ -98,27 +149,90 @@ class UserCustom {
         Language.german,
         "bryce@noah.com",
         ["I lost my stuffs, does anyone know how to get them back?", "I also lost my badge"],
+        [for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(9))],
         [],
-        [],[],[], Gender.boy),
-    People("Victoria", "assets/vic.png", Place.brussels, 0, true, Language.french,
-        "victoria@noah.com", [
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
-          "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
-          "exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute "
-          "irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
-          "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia "
-          "deserunt mollit anim id est laborum."
-    ], [], [],[],[], Gender.girl),
-    People("Delphine", "assets/dede.png", Place.budapest, 0, true, Language.english,
-        "delphine@noah.com", [], [], [],[],[], Gender.girl),
-    People("Manu", "assets/manu.png", Place.brussels, 0, false, Language.french,
-        "manu@noah.com", ["I'm hungry, does someone have a pizza ?"], [], [],[],[], Gender.boy),
-    People("Machin", "assets/duolingo.png", Place.brussels, 0, false, Language.german,
-        "manu@noah.com", [], [], [],[],[], Gender.girl),
-    People("machin", "assets/duolingo.png", Place.budapest, 0, false, Language.french,
-        "manu@noah.com", [], [], [],[],[], Gender.boy),
+        [],
+        [],
+        Gender.boy),
+    People(
+        "Victoria",
+        "assets/vic.png",
+        Place.brussels,
+        0,
+        true,
+        Language.french,
+        "victoria@noah.com",
+        [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
+              "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud "
+              "exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute "
+              "irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
+              "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia "
+              "deserunt mollit anim id est laborum."
+        ],
+        [for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(9))],
+        [],
+        [],
+        [],
+        Gender.girl),
+    People(
+        "Delphine",
+        "assets/dede.png",
+        Place.budapest,
+        0,
+        true,
+        Language.english,
+        "delphine@noah.com",
+        [],
+        [for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(9))],
+        [],
+        [],
+        [],
+        Gender.girl),
+    People(
+        "Manu",
+        "assets/manu.png",
+        Place.brussels,
+        0,
+        false,
+        Language.french,
+        "manu@noah.com",
+        ["I'm hungry, does someone have a pizza ?"],
+        [for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(9))],
+        [],
+        [],
+        [],
+        Gender.boy),
+    People(
+        "Machin",
+        "assets/duolingo.png",
+        Place.brussels,
+        0,
+        false,
+        Language.german,
+        "manu@noah.com",
+        [],
+        [for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(9))],
+        [],
+        [],
+        [],
+        Gender.girl),
+    People(
+        "machin",
+        "assets/duolingo.png",
+        Place.budapest,
+        0,
+        false,
+        Language.french,
+        "manu@noah.com",
+        [],
+        [for (int i = 0; i < 7 * 8; i++) ActivityData(DateTime.now(), Random().nextInt(9))],
+        [],
+        [],
+        [],
+        Gender.boy),
   ];
-  static List<String> earnedBadges = ["Walking 21 days", "No sugar","Sleep","Meditation"];
+  static List<String> earnedBadges = ["Walking 21 days", "No sugar", "Sleep", "Meditation"];
   static List<String> achievedGoals = self.achievedGoals;
 
   static final UserCustom _singleton = UserCustom._internal();
@@ -151,8 +265,9 @@ class UserCustom {
     }
   }
 
-  String getCoachPath(){ return self.getCoachPath();}
-
+  String getCoachPath() {
+    return self.getCoachPath();
+  }
 }
 
 class Walk {
@@ -175,6 +290,8 @@ enum Language { english, french, spanish, german }
 
 enum Gender { boy, girl }
 
+enum Integer { a, b, c, d, e, f, g, h }
+
 class People {
   final Language language;
   final String email;
@@ -189,10 +306,22 @@ class People {
   List<String> achievedGoals;
   List<String> earnedBadges;
   Gender coachGender; // 1 or 2
-  int coachLvl=1; // 1 to 3
+  int coachLvl = 1; // 1 to 3
 
-  People(this.name, this.picturePath, this.place, this.credits, this.isFriend, this.language,
-      this.email, this.problems, this.activity, this.notifications, this.achievedGoals, this.earnedBadges, this.coachGender);
+  People(
+      this.name,
+      this.picturePath,
+      this.place,
+      this.credits,
+      this.isFriend,
+      this.language,
+      this.email,
+      this.problems,
+      this.activity,
+      this.notifications,
+      this.achievedGoals,
+      this.earnedBadges,
+      this.coachGender);
 
   void addProblem(String problem) {
     problems.add(problem);
@@ -205,6 +334,7 @@ class People {
   void removeNotification(int index) {
     notifications.removeAt(index);
   }
+
   void addAchievedGoal(String goal) {
     achievedGoals.add(goal);
   }
@@ -213,8 +343,8 @@ class People {
     earnedBadges.add(badge);
   }
 
-  String getCoachPath(){
-    if (this.coachGender == Gender.boy){
+  String getCoachPath() {
+    if (coachGender == Gender.boy) {
       return "assets/Coach1-$coachLvl.gif";
     }
     return "assets/Coach2-$coachLvl.gif";

@@ -81,9 +81,9 @@ class _ProfilePage extends State<ProfilePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const CircleAvatar(
+            CircleAvatar(
               radius: 50.0,
-              backgroundImage: AssetImage('assets/Coach2-1.png'),
+              backgroundImage: AssetImage(UserCustom.coachPath),
             ),
             const SizedBox(height: 50.0),
             ElevatedButton(

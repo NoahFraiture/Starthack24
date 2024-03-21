@@ -146,7 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
           Transform.translate(
             offset: const Offset(0, 0),
             child: Image.asset(
-              UserCustom.coachPath,
+              UserCustom.coach(),
               height: 206,
               width: 206,
             ),
@@ -262,7 +262,6 @@ class _MyHomePageState extends State<MyHomePage> {
               margin: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
               child: Column(
                 children: <Widget>[
-
                   Row(
                     children: <Widget>[
                       Image.asset(
@@ -296,11 +295,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 children: <Widget>[
                   Row(
                     children: <Widget>[
-                      const Icon(
-                        Icons.water_drop,
-                        color: Colors.black,
-                        size : 30
-                      ),
+                      const Icon(Icons.water_drop, color: Colors.black, size: 30),
                       const SizedBox(
                         width: 13.0, // More space
                       ),
@@ -309,7 +304,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           height: 20,
                           width: 200,
                           child: LinearProgressIndicator(
-                            value: min(UserCustom.water / 8, 1),  // ensuring value is between 0 and 1 with min
+                            value: min(UserCustom.water / 8,
+                                1), // ensuring value is between 0 and 1 with min
                             color: secondaryColor,
                             backgroundColor: Colors.grey[300],
                           ),

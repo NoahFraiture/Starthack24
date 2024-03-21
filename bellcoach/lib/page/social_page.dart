@@ -3,6 +3,8 @@ import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
 
+import '../page/people_page.dart';
+
 class SocialPage extends StatefulWidget {
   const SocialPage({super.key});
 
@@ -32,7 +34,7 @@ class _SocialPage extends State<SocialPage> {
                 child: ListView(
                   children: [
                     for (People friend in UserCustom.people)
-                      if (friend.isFriend) friendInfo(friend),
+                      if (friend.isFriend) friendInfo(friend, context),
                   ],
                 ),
               ),
@@ -64,37 +66,48 @@ class _SocialPage extends State<SocialPage> {
   }
 }
 
-Widget friendInfo(People people) {
+Widget friendInfo(People people, BuildContext context) {
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 8.0),
-    child: Row(
-      children: [
-        CircleAvatar(
-          radius: 30.0,
-          backgroundImage: AssetImage(people.picturePath),
-        ),
-        const SizedBox(width: 10.0),
-        Text(people.name),
-        const Spacer(),
-        const Column(
-          children: [Icon(Icons.card_giftcard), Text("50")],
-        ),
-        const Spacer(),
-        Column(
+    child: InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          PageRouteBuilder(
+            pageBuilder: (context, animation1, animation2) => PeoplePage(people: people),
+            transitionDuration: Duration.zero,
+            reverseTransitionDuration: Duration.zero)
+        );
+      },
+      child:  Row(
           children: [
-            Row(
-              children: [Text("Score : ${people.credits}"), const Icon(Icons.diamond_outlined)],
+            CircleAvatar(
+              radius: 30.0,
+              backgroundImage: AssetImage(people.picturePath),
             ),
-            Row(
+            const SizedBox(width: 10.0),
+            Text(people.name),
+            const Spacer(),
+            const Column(
+              children: [Icon(Icons.card_giftcard), Text("50")],
+            ),
+            const SizedBox(width: 10.0),
+            Column(
               children: [
-                const Icon(Icons.location_on_sharp),
-                Text(UserCustom.placeToString(people.place))
+                Row(
+                  children: [Text("Score : ${people.credits}"), const Icon(Icons.diamond_outlined)],
+                ),
+                Row(
+                  children: [
+                    const Icon(Icons.add_location),
+                    Text(UserCustom.placeToString(people.place))
+                  ],
+                )
               ],
-            )
+            ),
           ],
         ),
-      ],
-    ),
+    )
   );
 }
 
