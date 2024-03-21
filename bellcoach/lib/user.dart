@@ -208,9 +208,9 @@ class People {
 
   String getCoachPath(){
     if (this.coachGender == Gender.boy){
-      return "assets/Coach1-{$coachLvl}.gif";
+      return "assets/Coach1-$coachLvl.gif";
     }
-    return "assets/Coach2-{$coachLvl}.gif";
+    return "assets/Coach2-$coachLvl.gif";
   }
 }
 
