@@ -78,26 +78,26 @@ class _MyHomePageState extends State<MyHomePage> {
   // activity init
   final activityRecognition = FlutterActivityRecognition.instance;
   List<String> quotes = [
-    "The only way to achieve the impossible is to believe it is possible. - Charles Kingsleigh",
+    "The only way to achieve the impossible is to believe it is possible.\n- Charles Kingsleigh",
     "The harder you work for something, the greater you’ll feel when you achieve it.",
-    "Don’t stop when you’re tired. Stop when you’re done. - Marilyn Monroe",
-    "The only limit to our realization of tomorrow will be our doubts of today. - Franklin D. Roosevelt",
-    "Believe you can and you're halfway there. - Theodore Roosevelt",
-    "It does not matter how slowly you go as long as you do not stop. - Confucius",
-    "Don't watch the clock; do what it does. Keep going. - Sam Levenson",
-    "It always seems impossible until it's done. - Nelson Mandela",
-    "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle. - Christian D. Larson",
-    "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful. - Albert Schweitzer",
-    "The future belongs to those who believe in the beauty of their dreams. - Eleanor Roosevelt",
-    "Act as if what you do makes a difference. It does. - William James",
-    "Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got this. - Chantal Sutherland",
-    "Your time is limited, don’t waste it living someone else’s life. - Steve Jobs",
-    "Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence. - Helen Keller",
-    "You are never too old to set another goal or to dream a new dream. - C.S. Lewis",
-    "Success is not final, failure is not fatal: It is the courage to continue that counts. - Winston Churchill",
-    "You miss 100% of the shots you don’t take. - Wayne Gretzky",
-    "The best way to predict the future is to create it. - Peter Drucker",
-    "Don't be afraid to give up the good to go for the great. - John D. Rockefeller",
+    "Don’t stop when you’re tired. Stop when you’re done.\n- Marilyn Monroe",
+    "The only limit to our realization of tomorrow will be our doubts of today.\n- Franklin D. Roosevelt",
+    "Believe you can and you're halfway there.\n- Theodore Roosevelt",
+    "It does not matter how slowly you go as long as you do not stop.\n- Confucius",
+    "Don't watch the clock; do what it does. Keep going.\n- Sam Levenson",
+    "It always seems impossible until it's done.\n- Nelson Mandela",
+    "Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle.\n- Christian D. Larson",
+    "Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.\n- Albert Schweitzer",
+    "The future belongs to those who believe in the beauty of their dreams.\n- Eleanor Roosevelt",
+    "Act as if what you do makes a difference. It does.\n- William James",
+    "Believe in yourself, take on your challenges, dig deep within yourself to conquer fears. Never let anyone bring you down. You got this.\n- Chantal Sutherland",
+    "Your time is limited, don’t waste it living someone else’s life.\n- Steve Jobs",
+    "Optimism is the faith that leads to achievement. Nothing can be done without hope and confidence.\n- Helen Keller",
+    "You are never too old to set another goal or to dream a new dream.\n- C.S. Lewis",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.\n- Winston Churchill",
+    "You miss 100% of the shots you don’t take.\n- Wayne Gretzky",
+    "The best way to predict the future is to create it.\n- Peter Drucker",
+    "Don't be afraid to give up the good to go for the great.\n- John D. Rockefeller",
   ];
 
   String getRandomQuote() {
@@ -244,7 +244,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     getRandomQuote(),
                     style: const TextStyle(
                       fontSize: 15,
-                      color: accentColor,
+                      color: textColor,
                       fontStyle: FontStyle.italic,
                     ),
                   ),
@@ -259,19 +259,29 @@ class _MyHomePageState extends State<MyHomePage> {
               margin: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
               child: Column(
                 children: <Widget>[
-                  const Text(
-                    'Your Steps of the Day',
-                    style: TextStyle(color: primaryFgColor, fontSize: 20)
+                  Row(
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/steps.png', // path to your SVG
+                        height: 45,
+                        width: 45,
+                      ),
+                      const SizedBox(
+                        width: 4.0, // More space
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          height: 20, // Define the height of the progress bar
+                          width: 200,
+                          child: LinearProgressIndicator(
+                            value: min(UserCustom.currentSteps / 10000, 1),
+                            color: secondaryColor,
+                            backgroundColor: Colors.grey[300],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-              SizedBox(
-                height: 9, // Define the height of the progress bar
-                child: LinearProgressIndicator(
-                    value: min(UserCustom.currentSteps / 10000, 1),  // we ensure value is between 0 and 1 by using min
-                    color: secondaryColor,
-                    backgroundColor: Colors.grey[300],
-                ),
-                  ),
-                  const SizedBox(height: 10.0),
                   Text('${UserCustom.currentSteps} / 10000 steps'),
                 ],
               ),
@@ -280,19 +290,29 @@ class _MyHomePageState extends State<MyHomePage> {
               margin: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
               child: Column(
                 children: <Widget>[
-                  const Text(
-                    'Glass of Water Drunk',
-                    style: TextStyle(color: primaryFgColor, fontSize: 20),
+                  Row(
+                    children: <Widget>[
+                      const Icon(
+                        Icons.water_drop,
+                        color: Colors.black,
+                        size : 30
+                      ),
+                      const SizedBox(
+                        width: 13.0, // More space
+                      ),
+                      Expanded(
+                        child: SizedBox(
+                          height: 20,
+                          width: 200,
+                          child: LinearProgressIndicator(
+                            value: min(UserCustom.water / 8, 1),  // ensuring value is between 0 and 1 with min
+                            color: secondaryColor,
+                            backgroundColor: Colors.grey[300],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-              SizedBox(
-                height: 9, // Define the height of the progress bar
-                child: LinearProgressIndicator(
-                    value: min(UserCustom.water / 8, 1),  // we ensure value is between 0 and 1 with min
-                    color: secondaryColor,
-                    backgroundColor: Colors.grey[300],
-                ),
-                  ),
-                  const SizedBox(height: 10.0),
                   Text('${UserCustom.water} / 8 glasses of water'),
                 ],
               ),
