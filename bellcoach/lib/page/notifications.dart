@@ -16,7 +16,7 @@ class NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       body: ListView.builder(
         itemCount: UserCustom.self.notifications.length,
         itemBuilder: (context, index) {
@@ -34,17 +34,17 @@ class NotificationsPageState extends State<NotificationsPage> {
                   leading:
                       Image.asset(notification.sender.picturePath), // PicturePath from the sender
                   title: Text(notification.sender.name, // Sender's name
-                      style: TextStyle(color: primaryFgColor)),
+                      style: const TextStyle(color: primaryFgColor)),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(notification.message, style: TextStyle(color: primaryFgColor)),
+                      Text(notification.message, style: const TextStyle(color: primaryFgColor)),
                       Text('Received at: ${notification.notificationTime}',
-                          style: TextStyle(color: primaryFgColor)),
+                          style: const TextStyle(color: primaryFgColor)),
                     ],
                   ),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete, color: primaryFgColor),
+                    icon: const Icon(Icons.delete, color: primaryFgColor),
                     onPressed: () {
                       setState(() {
                         UserCustom.self.removeNotification(index);

@@ -14,7 +14,7 @@ class _Problems extends State<Problems> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(

@@ -2,8 +2,8 @@ import 'package:bellcoach/page/breathing.dart';
 import 'package:bellcoach/user.dart';
 import 'package:bellcoach/widget/bottom_bar_custom.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer';
 
 class HealthPage extends StatefulWidget {
   const HealthPage({super.key});
@@ -76,8 +76,8 @@ class _HealthPage extends State<HealthPage> {
             ),
             const SizedBox(height: 50),
             const Text("Water drinking", style: TextStyle(fontSize: 20)),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-              for (int i = 0; i < 6; i++)
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              for (int i = 0; i < 4; i++)
                 Glass(
                     index: i,
                     iconColor: i <= UserCustom.water
@@ -89,43 +89,73 @@ class _HealthPage extends State<HealthPage> {
                           } else {
                             UserCustom.water = index;
                           }
-                        }))
+                        })),
+            ]),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+              for (int i = 4; i < 8; i++)
+                Glass(
+                    index: i,
+                    iconColor: i <= UserCustom.water
+                        ? Theme.of(context).colorScheme.secondary
+                        : Theme.of(context).colorScheme.onBackground,
+                    onTap: (index) => setState(() {
+                          if (index == UserCustom.water) {
+                            UserCustom.water = index - 1;
+                          } else {
+                            UserCustom.water = index;
+                          }
+                        })),
             ]),
             const SizedBox(height: 50),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  child: ElevatedButton(
-                      style: ButtonStyle(
-                          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-                      ))),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          PageRouteBuilder(
-                            pageBuilder: (context, animation1, animation2) => const BreathingPage(),
-                            transitionDuration: Duration.zero,
-                            reverseTransitionDuration: Duration.zero,
-                          ),
-                        );
-                      },
-                      child: Icon(
-                        Icons.self_improvement,
-                        color: Theme.of(context).colorScheme.onBackground,
-                      )),
-                )
+                ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ))),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) => const Placeholder(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    },
+                    child: Icon(
+                      Icons.fastfood_rounded,
+                      color: Theme.of(context).colorScheme.onBackground,
+                    )),
+                ElevatedButton(
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                            RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                    ))),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        PageRouteBuilder(
+                          pageBuilder: (context, animation1, animation2) => const BreathingPage(),
+                          transitionDuration: Duration.zero,
+                          reverseTransitionDuration: Duration.zero,
+                        ),
+                      );
+                    },
+                    child: Icon(
+                      Icons.self_improvement,
+                      color: Theme.of(context).colorScheme.onBackground,
+                    )),
               ],
             )
           ],
         ),
       ),
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       bottomNavigationBar: const BottomBarCustom(pageID: PageID.health),
     );
   }
@@ -140,6 +170,9 @@ class Glass extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-        onPressed: () => onTap(index), icon: Icon(Icons.water_drop, color: iconColor));
+      onPressed: () => onTap(index),
+      icon: Icon(Icons.water_drop, color: iconColor, size: 40),
+      padding: EdgeInsets.all(20),
+    );
   }
 }

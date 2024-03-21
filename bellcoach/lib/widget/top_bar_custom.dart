@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import '../main.dart';
 
 class TopBarCustom extends StatefulWidget implements PreferredSizeWidget {
-  const TopBarCustom({super.key});
+  final bool showBackButton;
+  const TopBarCustom({super.key, required this.showBackButton});
 
   @override
   State<TopBarCustom> createState() => _TopBarCustom();
@@ -18,7 +19,7 @@ class _TopBarCustom extends State<TopBarCustom> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      automaticallyImplyLeading: false,
+      automaticallyImplyLeading: widget.showBackButton,
       backgroundColor: Theme.of(context).colorScheme.secondary,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.center,

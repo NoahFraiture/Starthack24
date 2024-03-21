@@ -86,7 +86,7 @@ class UserCustom {
   static List<People> people = [
     self,
     People(
-        "Bryce",
+        "Bryceuh",
         "assets/duolingo.png",
         Place.madrid,
         0,

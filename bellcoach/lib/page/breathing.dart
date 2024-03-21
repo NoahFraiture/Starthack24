@@ -30,7 +30,7 @@ class _BreathingPageState extends State<BreathingPage> with TickerProviderStateM
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: true),
       body: AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
@@ -50,7 +50,7 @@ class _BreathingPageState extends State<BreathingPage> with TickerProviderStateM
           return Stack(
             children: <Widget>[
               Align(
-                alignment: Alignment(0, 0),
+                alignment: const Alignment(0, 0),
                 child: Container(
                   height: screenHeight * 0.48,
                   width: 55.0,

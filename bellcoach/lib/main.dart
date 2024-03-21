@@ -164,7 +164,7 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     return Scaffold(
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[

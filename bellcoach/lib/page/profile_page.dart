@@ -21,7 +21,7 @@ class _ProfilePage extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       body: UserCustom.connected ? loggedIn() : loggedOut(),
       floatingActionButton: UserCustom.connected
           ? FloatingActionButton(
