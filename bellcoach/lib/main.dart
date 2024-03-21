@@ -1,4 +1,5 @@
 import 'package:bellcoach/placeholder.dart';
+import 'package:bellcoach/social.dart';
 import 'package:bellcoach/top_bar_custom.dart';
 import 'package:flutter/material.dart';
 import 'package:bellcoach/bottom_bar_custom.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         colorScheme: colorScheme,
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: SocialPage(),
     );
   }
 }
