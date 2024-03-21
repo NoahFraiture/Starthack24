@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:bellcoach/page/food.dart';
 import 'package:bellcoach/page/notifications.dart';
 import 'package:bellcoach/page/problems_page.dart';
 import 'package:bellcoach/page/social_page.dart';
@@ -32,6 +33,7 @@ class _BottomBarCustomState extends State<BottomBarCustom> {
               PageID.factory => const Problems(),
               PageID.chat => const SocialPage(),
               PageID.notification => NotificationsPage(),
+              PageID.food => FoodPage(),
               PageID.invalid => throw UnimplementedError(),
               PageID.home => throw UnimplementedError(),
               PageID.profile => throw UnimplementedError(),
@@ -138,4 +140,5 @@ enum PageID {
   chat,
   notification,
   invalid,
+  food
 }

@@ -1,4 +1,5 @@
 import 'package:bellcoach/page/breathing.dart';
+import 'package:bellcoach/page/food.dart';
 import 'package:bellcoach/placeholder.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
@@ -32,7 +33,7 @@ class MyApp extends StatelessWidget {
         colorScheme: colorScheme,
         useMaterial3: true,
       ),
-      home: const MyHomePage(), //Replace this with NotificationsPage
+      home: FoodPage(), //Replace this with NotificationsPage
     );
   }
 }
@@ -265,12 +266,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   Row(
                     children: <Widget>[
                       Image.asset(
-                        'assets/steps.png', // path to your SVG
+                        'assets/steps.png',
                         height: 45,
                         width: 45,
                       ),
                       const SizedBox(
-                        width: 4.0, // More space
+                        width: 4.0,
                       ),
                       Expanded(
                         child: SizedBox(
