@@ -11,7 +11,6 @@ class ShopPage extends StatefulWidget {
   State<ShopPage> createState() => _ShopPage();
 }
 
-
 class _ShopPage extends State<ShopPage> {
   TextEditingController textController = TextEditingController();
 
@@ -63,10 +62,7 @@ class _ShopPage extends State<ShopPage> {
           ),
         ),
       ),
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
     );
   }
 }
-
-
-
