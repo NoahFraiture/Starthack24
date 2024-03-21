@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         colorScheme: colorScheme,
         useMaterial3: true,
       ),
-      home: NotificationsPage(), //Replace this with NotificationsPage
+      home: MyHomePage(), //Replace this with NotificationsPage
     );
   }
 }
@@ -42,12 +42,97 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+class DiscussionPainter extends CustomPainter {
+  final Color color;
+  DiscussionPainter(this.color);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    var paint = Paint()..color = color;
+
+    var rect = Rect.fromLTWH(0, 0, size.width - 10, size.height);
+    var rrect = RRect.fromRectAndRadius(rect, Radius.circular(15));
+
+    canvas.drawRRect(rrect, paint);
+
+    var path = Path()
+      ..addPolygon([
+        Offset(size.width - 10, size.height * 0.2),
+        Offset(size.width, size.height * 0.3),
+        Offset(size.width - 10, size.height * 0.4),
+      ], true);
+
+    canvas.drawPath(path, paint);
+  }
+
+  @override
+  bool shouldRepaint(DiscussionPainter oldDelegate) {
+    return oldDelegate.color != color;
+  }
+}
+
 class _MyHomePageState extends State<MyHomePage> {
+  Padding buildWelcomeBubble() {
+    var welcome = Padding(
+      padding: const EdgeInsets.only(top: 40),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
+            child: CustomPaint(
+              painter: DiscussionPainter(secondaryColor),
+              child: Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: Text(
+                  'Welcome Noah !',
+                  style: TextStyle(color: Colors.white, fontSize: 24)
+                ),
+              ),
+            ),
+          ),
+          Transform.translate( // Adding the Transform.translate widget here
+            offset: Offset(0, 10), // Moving the image 10 pixels down
+            child: Image.asset('assets/duolingo.png', height: 115, width: 115,),
+          )
+        ],
+      ),
+    );
+    return welcome;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const TopBarCustom(),
-      body: Container(),
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            buildWelcomeBubble(),
+            SizedBox(height: 90),
+           const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 8),
+              child: Column(
+                children: <Widget>[
+                  LinearProgressIndicator(
+                    value: 0.7, // 70% progress
+                    backgroundColor: backgroundColor,
+                    color: secondaryColor,
+                    minHeight: 14,
+                  ),
+                  SizedBox(height: 10),
+                  LinearProgressIndicator(
+                    value: 0.3, // 30% progress
+                    backgroundColor: backgroundColor,
+                    color: secondaryColor,
+                    minHeight: 14,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomBarCustom(
         index: 0,
         onTap: (int value) {

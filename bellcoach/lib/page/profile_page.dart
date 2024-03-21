@@ -1,3 +1,4 @@
+import 'package:bellcoach/ressources/colors.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
@@ -42,7 +43,7 @@ class _ProfilePage extends State<ProfilePage> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-              child: const Text('Login'),
+              child: const Text('Login',style: TextStyle(color: primaryFgColor)),
             ),
           ],
         ),
@@ -74,7 +75,7 @@ class _ProfilePage extends State<ProfilePage> {
                       final TextEditingController nameController = TextEditingController();
 
                       return AlertDialog(
-                          title: const Text('Change name'),
+                          title: const Text('Change name',style: TextStyle(color: primaryFgColor)),
                           content: TextField(
                             controller: nameController,
                           ),
@@ -83,7 +84,7 @@ class _ProfilePage extends State<ProfilePage> {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: const Text('Cancel')),
+                                child: const Text('Cancel',style: TextStyle(color: primaryFgColor))),
                             TextButton(
                               onPressed: () {
                                 setState(() {
@@ -91,7 +92,7 @@ class _ProfilePage extends State<ProfilePage> {
                                 });
                                 Navigator.pop(context);
                               },
-                              child: const Text('Save'),
+                              child: const Text('Save',style: TextStyle(color: primaryFgColor)),
                             )
                           ]);
                     });
@@ -102,7 +103,7 @@ class _ProfilePage extends State<ProfilePage> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-              child: const Text('Set name'),
+              child: const Text('Set name',style: TextStyle(color: primaryFgColor)),
             ),
             const SizedBox(height: 10.0),
             ElevatedButton(
@@ -111,7 +112,7 @@ class _ProfilePage extends State<ProfilePage> {
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
-                        title: const Text('Change place'),
+                        title: const Text('Change place',style: TextStyle(color: primaryFgColor)),
                         content: DropdownMenu(
                           initialSelection: UserCustom.place,
                           onSelected: (value) {
@@ -136,7 +137,7 @@ class _ProfilePage extends State<ProfilePage> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-              child: const Text('Work place'),
+              child: const Text('Work place',style: TextStyle(color: primaryFgColor)),
             ),
             const SizedBox(height: 10.0),
             ElevatedButton(
@@ -147,7 +148,7 @@ class _ProfilePage extends State<ProfilePage> {
                       final TextEditingController emailController = TextEditingController();
 
                       return AlertDialog(
-                          title: const Text('Change email'),
+                          title: const Text('Change email',style: TextStyle(color: primaryFgColor)),
                           content: TextField(
                             controller: emailController,
                           ),
@@ -156,7 +157,7 @@ class _ProfilePage extends State<ProfilePage> {
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },
-                                child: const Text('Cancel')),
+                                child: const Text('Cancel',style: TextStyle(color: primaryFgColor))),
                             TextButton(
                               onPressed: () {
                                 setState(() {
@@ -164,7 +165,7 @@ class _ProfilePage extends State<ProfilePage> {
                                 });
                                 Navigator.pop(context);
                               },
-                              child: const Text('Save'),
+                              child: const Text('Save',style: TextStyle(color: primaryFgColor)),
                             )
                           ]);
                     });
@@ -175,7 +176,7 @@ class _ProfilePage extends State<ProfilePage> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-              child: const Text('Change email'),
+              child: const Text('Change email',style: TextStyle(color: primaryFgColor)),
             ),
             const SizedBox(height: 10.0),
             ElevatedButton(
@@ -190,7 +191,7 @@ class _ProfilePage extends State<ProfilePage> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
-              child: const Text('Logout'),
+              child: const Text('Logout',style: TextStyle(color: primaryFgColor)),
             ),
           ],
         ),
