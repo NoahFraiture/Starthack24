@@ -58,7 +58,7 @@ class _SocialPage extends State<SocialPage> {
           ),
         ),
       ),
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       bottomNavigationBar: const BottomBarCustom(pageID: PageID.chat),
     );
   }
@@ -79,7 +79,7 @@ Widget friendInfo(People people) {
         const Column(
           children: [Icon(Icons.card_giftcard), Text("50")],
         ),
-        const SizedBox(width: 10.0),
+        const Spacer(),
         Column(
           children: [
             Row(
@@ -87,7 +87,7 @@ Widget friendInfo(People people) {
             ),
             Row(
               children: [
-                const Icon(Icons.add_location),
+                const Icon(Icons.location_on_sharp),
                 Text(UserCustom.placeToString(people.place))
               ],
             )

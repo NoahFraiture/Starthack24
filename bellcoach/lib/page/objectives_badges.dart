@@ -6,13 +6,13 @@ class ObjectivesBadgesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       body: Column(
         children: [
           ListTile(
             leading: Checkbox(
                 value: true, // set true if goal is reached, false if not
-                onChanged: (value) { /* handle when the checkbox changes */ }),
+                onChanged: (value) {/* handle when the checkbox changes */}),
             title: Text('Objective 1'),
           ),
           Expanded(

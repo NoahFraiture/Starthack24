@@ -20,7 +20,7 @@ class NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       body: ListView.builder(
         itemCount: UserCustom.self.notifications.length,
         itemBuilder: (context, index) {

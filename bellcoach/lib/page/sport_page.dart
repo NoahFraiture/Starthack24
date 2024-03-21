@@ -38,7 +38,7 @@ class _SportPage extends State<SportPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       body: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

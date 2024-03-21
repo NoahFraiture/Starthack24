@@ -17,7 +17,7 @@ class _PeoplePage extends State<PeoplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const TopBarCustom(),
+      appBar: const TopBarCustom(showBackButton: false),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Center(
