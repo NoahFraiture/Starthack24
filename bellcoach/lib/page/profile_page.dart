@@ -83,7 +83,7 @@ class _ProfilePage extends State<ProfilePage> {
           children: [
             const CircleAvatar(
               radius: 50.0,
-              backgroundImage: AssetImage('assets/duolingo.png'),
+              backgroundImage: AssetImage('assets/Coach2-1.png'),
             ),
             const SizedBox(height: 50.0),
             ElevatedButton(
@@ -115,7 +115,7 @@ class _ProfilePage extends State<ProfilePage> {
           children: [
             const CircleAvatar(
               radius: 50.0,
-              backgroundImage: AssetImage('assets/duolingo.png'),
+              backgroundImage: AssetImage('assets/noah.png'),
             ),
             const SizedBox(height: 10.0),
             Text("Hello ${UserCustom.name}"),
