@@ -1,7 +1,4 @@
 import 'package:bellcoach/page/chatbot_page.dart';
-import 'package:bellcoach/page/breathing.dart';
-import 'package:bellcoach/page/food.dart';
-import 'package:bellcoach/placeholder.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
@@ -141,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: Text('Welcome ${UserCustom.name} ! \nYou\'re doing such\na great job !',
-                    style: TextStyle(color: Colors.white, fontSize: 14)),
+                    style: const TextStyle(color: Colors.white, fontSize: 14)),
               ),
             ),
           ),

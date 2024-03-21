@@ -1,14 +1,10 @@
-import 'dart:io';
-
 import 'package:bellcoach/page/food.dart';
 import 'package:bellcoach/page/notifications.dart';
 import 'package:bellcoach/page/problems_page.dart';
 import 'package:bellcoach/page/social_page.dart';
 import 'package:bellcoach/page/sport_page.dart';
+import 'package:bellcoach/page/health_page.dart';
 import 'package:flutter/material.dart';
-
-import '../main.dart';
-import '../page/health_page.dart';
 
 class BottomBarCustom extends StatefulWidget {
   final PageID pageID;
@@ -51,6 +47,7 @@ class _BottomBarCustomState extends State<BottomBarCustom> {
       onTap: onTap,
       showSelectedLabels: false,
       showUnselectedLabels: false,
+      type: BottomNavigationBarType.fixed,
       items: [
         BottomNavigationBarItem(
             icon: Icon(
@@ -131,14 +128,4 @@ class _BottomBarCustomState extends State<BottomBarCustom> {
   }
 }
 
-enum PageID {
-  home,
-  profile,
-  running,
-  health,
-  factory,
-  chat,
-  notification,
-  invalid,
-  food
-}
+enum PageID { home, profile, running, health, factory, chat, notification, invalid, food }
