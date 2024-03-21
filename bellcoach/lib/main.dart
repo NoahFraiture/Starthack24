@@ -288,7 +288,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Colors.blue,
                     backgroundColor: Colors.grey[300],
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   Text('${UserCustom.water} / 8 glasses of water'),
                 ],
               ),
