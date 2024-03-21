@@ -4,9 +4,8 @@ import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
 import 'package:bellcoach/widget/bottom_bar_custom.dart';
 import 'package:bellcoach/ressources/colors.dart';
-import 'dart:math' show Random;
+import 'dart:math' show Random, min;
 import 'dart:developer' show log;
-
 import 'package:pedometer/pedometer.dart';
 import 'package:flutter_activity_recognition/flutter_activity_recognition.dart';
 
@@ -127,22 +126,22 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Padding buildWelcomeBubble() {
     var welcome = Padding(
-      padding: const EdgeInsets.only(top: 20),   // reduced top padding
+      padding: const EdgeInsets.only(top: 40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(left: 7.0), // reduced left padding
+            padding: const EdgeInsets.only(left: 7), // try reducing this value
             child: CustomPaint(
               painter: DiscussionPainter(secondaryColor),
               child: Padding(
-                padding: EdgeInsets.all(15.0), // reduce values from 30 to 20
-                child: Text('Welcome ${UserCustom.name} !', style: TextStyle(color: Colors.white, fontSize: 20)),  // reduced fontSize
+                padding: const EdgeInsets.all(20.0),
+                child: Text('Welcome ${UserCustom.name} ! \nYou\'re doing such\na great job !', style: TextStyle(color: Colors.white, fontSize: 14)),
               ),
             ),
           ),
           Transform.translate(
-            offset: const Offset(-3, 6),
+            offset: const Offset(0, 0),
             child: Image.asset(
               UserCustom.coachPath,
               height: 206,
@@ -154,7 +153,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
     return welcome;
   }
-
   Widget displayBadges() {
     List<String> last4Badges = UserCustom.earnedBadges.reversed.toList().take(4).toList();
     if(last4Badges.isEmpty) {
@@ -255,7 +253,26 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
               height: 100,
               child: displayBadges(), // Your ListView.builder
-            )
+            ),
+            Container(
+              margin: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
+              child: Column(
+                children: <Widget>[
+                  const Text(
+                    'Your Stats of the day',
+                    style: TextStyle(color: primaryFgColor, fontSize: 20)
+                  ),
+                  const SizedBox(height: 20.0),
+                  LinearProgressIndicator(
+                    value: min(UserCustom.currentSteps / 10000, 1),  // we ensure value is between 0 and 1 by using min
+                    color: Colors.blue,
+                    backgroundColor: Colors.grey[300],
+                  ),
+                  SizedBox(height: 10.0),
+                  Text('${UserCustom.currentSteps} / 10000 steps'),
+                ],
+              ),
+            ),
           ],
         ),
       ),
