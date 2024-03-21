@@ -1,5 +1,5 @@
-import 'package:bellcoach/widget/grid_widget.dart';
 import 'package:bellcoach/page/people_page.dart';
+import 'package:bellcoach/page/sport_page.dart';
 import 'package:bellcoach/placeholder.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           colorScheme: colorScheme,
           useMaterial3: true,
         ),
-        home: PeoplePage(people: UserCustom.self));
+        home: SportPage());
   }
 }
 
