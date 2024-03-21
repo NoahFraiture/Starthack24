@@ -44,80 +44,110 @@ class _SportPage extends State<SportPage> {
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Center(
               child: Column(
+                mainAxisAlignment:
+                    MainAxisAlignment.center, // Center both vertically and horizontally
                 children: [
-                  IconButton(
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              title: const Text('Change your objective'),
-                              content: DropdownMenu(
-                                initialSelection: UserCustom.sportCategory,
-                                onSelected: (value) {
-                                  setState(() {
-                                    UserCustom.sportCategory = value!;
-                                  });
-                                },
-                                dropdownMenuEntries: [
-                                  for (SportCategory sportCategory in SportCategory.values)
-                                    DropdownMenuEntry(
-                                      value: sportCategory,
-                                      label: UserCustom.sportCategoryToString(sportCategory),
-                                    )
-                                ],
-                              ),
-                            );
-                          });
+                  DropdownButtonFormField<SportCategory>(
+                    // Use DropdownButtonFormField for better styling
+                    value: UserCustom.sportCategory,
+                    icon: const Icon(Icons.arrow_drop_down), // More intuitive dropdown icon
+                    iconSize: 24, // Adjust icon size as needed
+                    items: SportCategory.values.map((sportCategory) {
+                      return DropdownMenuItem<SportCategory>(
+                        value: sportCategory,
+                        child: Text(UserCustom.sportCategoryToString(sportCategory)),
+                      );
+                    }).toList(),
+                    onChanged: (newSportCategory) {
+                      setState(() {
+                        UserCustom.sportCategory = newSportCategory!;
+                      });
                     },
-                    icon: const Icon(Icons.ads_click),
-                    iconSize: 100,
+                    decoration: InputDecoration(
+                      // Customize dropdown button appearance
+                      labelText: 'Objectifs', // Use a clear label for accessibility and guidance
+                      filled: true, // Add a subtle fill color
+                      fillColor: Colors.grey[200], // Adjust fill color if desired
+                      contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 8.0), // Adjust padding
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0), // Rounded corners
+                        borderSide: BorderSide(color: Colors.grey[400]!), // Lighter border
+                      ),
+                    ),
                   ),
-                  const Text("Objetifs", style: TextStyle(fontSize: 20)),
                 ],
               ),
             ),
             const SizedBox(height: 80),
             const Text("Exercices", style: TextStyle(fontSize: 20)),
             Expanded(
-              child: GridView.count(crossAxisCount: 2, children: [
-                for (Exercice exercice in exercices)
-                  if (exercice.category == UserCustom.sportCategory)
-                    Container(
-                        margin: const EdgeInsets.all(5),
-                        child: GestureDetector(
-                          onTap: () => Navigator.push(
-                              context,
-                              PageRouteBuilder(
-                                  pageBuilder: (context, animation1, animation2) =>
-                                      TimerPage(exercice: exercice),
-                                  transitionDuration: Duration.zero)),
-                          child: Stack(children: [
-                            Container(
-                                decoration: BoxDecoration(
-                                    image:
-                                        DecorationImage(image: AssetImage(exercice.picturePath)))),
-                            Align(
+              child: GridView.count(
+                crossAxisCount: 2,
+                childAspectRatio: 1.6, // Adjust aspect ratio for a more pleasing layout (optional)
+                children: [
+                  for (Exercice exercice in exercices)
+                    if (exercice.category == UserCustom.sportCategory)
+                      InkWell(
+                        // Use InkWell for a more natural tap feedback
+                        onTap: () => Navigator.push(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation1, animation2) =>
+                                TimerPage(exercice: exercice),
+                            transitionDuration: Duration.zero,
+                          ),
+                        ),
+                        child: Container(
+                          margin: const EdgeInsets.all(8.0), // Adjust margin for spacing
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10.0), // Rounded corners
+                            boxShadow: [
+                              // Add subtle shadow for depth
+                              BoxShadow(
+                                color: Colors.grey[300]!.withOpacity(0.5),
+                                offset: const Offset(2.0, 4.0), // Adjust shadow offset
+                                blurRadius: 4.0, // Adjust shadow blur
+                              ),
+                            ],
+                            image: DecorationImage(
+                              image: AssetImage(exercice.picturePath),
+                              fit: BoxFit.cover, // Ensure image covers the container
+                            ),
+                          ),
+                          child: Stack(
+                            children: [
+                              Align(
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
-                                    width: double.infinity,
-                                    height: 50.0,
-                                    decoration: BoxDecoration(
-                                        gradient: LinearGradient(
+                                  width: double.infinity,
+                                  height: 50.0,
+                                  decoration: BoxDecoration(
+                                    gradient: LinearGradient(
                                       begin: Alignment.topCenter,
                                       end: Alignment.bottomCenter,
                                       colors: [Colors.transparent, Colors.black.withOpacity(0.5)],
-                                    )))),
-                            Positioned(
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Positioned(
                                 bottom: 10.0,
                                 left: 10.0,
                                 child: Text(
                                   exercice.name,
-                                  style: const TextStyle(color: Colors.white),
-                                ))
-                          ]),
-                        ))
-              ]),
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16.0, // Adjust font size
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                ],
+              ),
             ),
           ])),
       bottomNavigationBar: const BottomBarCustom(pageID: PageID.running),

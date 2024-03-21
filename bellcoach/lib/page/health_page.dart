@@ -106,14 +106,14 @@ class _HealthPage extends State<HealthPage> {
                 for (int i = 0; i < 4; i++)
                   Glass(
                       index: i,
-                      iconColor: i <= UserCustom.water
+                      iconColor: i < UserCustom.water
                           ? Theme.of(context).colorScheme.secondary
                           : Theme.of(context).colorScheme.onBackground,
                       onTap: (index) => setState(() {
                             if (index == UserCustom.water) {
-                              UserCustom.water = index - 1;
-                            } else {
                               UserCustom.water = index;
+                            } else {
+                              UserCustom.water = index + 1;
                             }
                           })),
               ]),
@@ -121,14 +121,14 @@ class _HealthPage extends State<HealthPage> {
                 for (int i = 4; i < 8; i++)
                   Glass(
                       index: i,
-                      iconColor: i <= UserCustom.water
+                      iconColor: i < UserCustom.water
                           ? Theme.of(context).colorScheme.secondary
                           : Theme.of(context).colorScheme.onBackground,
                       onTap: (index) => setState(() {
                             if (index == UserCustom.water) {
-                              UserCustom.water = index - 1;
-                            } else {
                               UserCustom.water = index;
+                            } else {
+                              UserCustom.water = index + 1;
                             }
                           })),
               ]),
