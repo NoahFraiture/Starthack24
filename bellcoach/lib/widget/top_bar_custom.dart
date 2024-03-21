@@ -1,3 +1,4 @@
+import 'package:bellcoach/page/notifications.dart';
 import 'package:bellcoach/page/profile_page.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
@@ -26,12 +27,12 @@ class _TopBarCustom extends State<TopBarCustom> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           IconButton(
-            icon: const Icon(Icons.home), // Profile icon
+            icon: const Icon(Icons.account_circle),
             onPressed: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                   context,
                   PageRouteBuilder(
-                      pageBuilder: (context, animation1, animation2) => const MyHomePage(),
+                      pageBuilder: (context, animation1, animation2) => const ProfilePage(),
                       transitionDuration: Duration.zero,
                       reverseTransitionDuration: Duration.zero));
             },
@@ -54,16 +55,16 @@ class _TopBarCustom extends State<TopBarCustom> {
                     ));
               }),
           IconButton(
-            icon: const Icon(Icons.account_circle),
+            icon: const Icon(Icons.notifications), // Profile icon
             onPressed: () {
               Navigator.pushReplacement(
                   context,
                   PageRouteBuilder(
-                      pageBuilder: (context, animation1, animation2) => const ProfilePage(),
+                      pageBuilder: (context, animation1, animation2) => NotificationsPage(),
                       transitionDuration: Duration.zero,
                       reverseTransitionDuration: Duration.zero));
             },
-          ),
+          )
         ],
       ),
     );

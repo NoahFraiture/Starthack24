@@ -12,9 +12,13 @@ class GridWidget extends StatelessWidget {
     data.sort((a, b) => b.date.compareTo(a.date));
     int min = data.map((e) => e.value).reduce((min, value) => min < value ? min : value);
     int max = data.map((e) => e.value).reduce((max, value) => max > value ? max : value);
+    List<ActivityData> realData = data;
+    if (realData.length > 7 * 8) {
+      realData = data.sublist(realData.length - 7 * 8, realData.length - 1);
+    }
     return GridView.count(
         crossAxisCount: 7,
-        children: data.map((e) => _buildActivityCell(min, e.value, max)).toList());
+        children: realData.map((e) => _buildActivityCell(min, e.value, max)).toList());
   }
 
   Widget _buildActivityCell(int min, int value, int max) {

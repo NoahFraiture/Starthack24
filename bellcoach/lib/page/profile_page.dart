@@ -1,4 +1,5 @@
 import 'package:bellcoach/ressources/colors.dart';
+import 'package:bellcoach/widget/bottom_bar_custom.dart';
 import 'package:bellcoach/widget/mood_picker_widget.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
@@ -21,6 +22,7 @@ class _ProfilePage extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const BottomBarCustom(pageID: PageID.profile),
       appBar: const TopBarCustom(showBackButton: false),
       body: UserCustom.connected ? loggedIn() : loggedOut(),
       floatingActionButton: UserCustom.connected

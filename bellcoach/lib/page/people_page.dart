@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:bellcoach/widget/bottom_bar_custom.dart';
 import 'package:bellcoach/widget/grid_widget.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
@@ -17,6 +18,7 @@ class _PeoplePage extends State<PeoplePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: const BottomBarCustom(pageID: PageID.profile),
       appBar: const TopBarCustom(showBackButton: false),
       body: Padding(
         padding: const EdgeInsets.all(20.0),

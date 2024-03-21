@@ -1,5 +1,5 @@
+import 'package:bellcoach/main.dart';
 import 'package:bellcoach/page/food.dart';
-import 'package:bellcoach/page/notifications.dart';
 import 'package:bellcoach/page/problems_page.dart';
 import 'package:bellcoach/page/social_page.dart';
 import 'package:bellcoach/page/sport_page.dart';
@@ -28,10 +28,10 @@ class _BottomBarCustomState extends State<BottomBarCustom> {
               PageID.health => const HealthPage(),
               PageID.factory => const Problems(),
               PageID.chat => const SocialPage(),
-              PageID.notification => NotificationsPage(),
+              PageID.notification => throw UnimplementedError(),
               PageID.food => FoodPage(),
               PageID.invalid => throw UnimplementedError(),
-              PageID.home => throw UnimplementedError(),
+              PageID.home => const MyHomePage(),
               PageID.profile => throw UnimplementedError(),
             };
           },
@@ -67,8 +67,8 @@ class _BottomBarCustomState extends State<BottomBarCustom> {
             label: ""),
         BottomNavigationBarItem(
             icon: Icon(
-              Icons.factory,
-              color: widget.pageID == PageID.factory
+              Icons.home,
+              color: widget.pageID == PageID.home
                   ? Theme.of(context).colorScheme.tertiary
                   : Theme.of(context).colorScheme.onBackground,
             ),
@@ -83,8 +83,8 @@ class _BottomBarCustomState extends State<BottomBarCustom> {
             label: ""),
         BottomNavigationBarItem(
             icon: Icon(
-              Icons.notification_important,
-              color: widget.pageID == PageID.notification
+              Icons.factory,
+              color: widget.pageID == PageID.factory
                   ? Theme.of(context).colorScheme.tertiary
                   : Theme.of(context).colorScheme.onBackground,
             ),
@@ -100,11 +100,11 @@ class _BottomBarCustomState extends State<BottomBarCustom> {
       case 1:
         return PageID.health;
       case 2:
-        return PageID.factory;
+        return PageID.home;
       case 3:
         return PageID.chat;
       case 4:
-        return PageID.notification;
+        return PageID.factory;
       default:
         return PageID.invalid;
     }
@@ -116,11 +116,11 @@ class _BottomBarCustomState extends State<BottomBarCustom> {
         return 0;
       case PageID.health:
         return 1;
-      case PageID.factory:
+      case PageID.home:
         return 2;
       case PageID.chat:
         return 3;
-      case PageID.notification:
+      case PageID.factory:
         return 4;
       default:
         return 0;
