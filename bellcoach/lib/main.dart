@@ -263,11 +263,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Your Steps of the Day',
                     style: TextStyle(color: primaryFgColor, fontSize: 20)
                   ),
-                  const SizedBox(height: 20.0),
-                  LinearProgressIndicator(
+              SizedBox(
+                height: 9, // Define the height of the progress bar
+                child: LinearProgressIndicator(
                     value: min(UserCustom.currentSteps / 10000, 1),  // we ensure value is between 0 and 1 by using min
-                    color: Colors.blue,
+                    color: secondaryColor,
                     backgroundColor: Colors.grey[300],
+                ),
                   ),
                   const SizedBox(height: 10.0),
                   Text('${UserCustom.currentSteps} / 10000 steps'),
@@ -282,11 +284,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Glass of Water Drunk',
                     style: TextStyle(color: primaryFgColor, fontSize: 20),
                   ),
-                  const SizedBox(height: 10.0),
-                  LinearProgressIndicator(
+              SizedBox(
+                height: 9, // Define the height of the progress bar
+                child: LinearProgressIndicator(
                     value: min(UserCustom.water / 8, 1),  // we ensure value is between 0 and 1 with min
-                    color: Colors.blue,
+                    color: secondaryColor,
                     backgroundColor: Colors.grey[300],
+                ),
                   ),
                   const SizedBox(height: 10.0),
                   Text('${UserCustom.water} / 8 glasses of water'),
