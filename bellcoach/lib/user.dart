@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:bellcoach/page/notifications.dart';
 
 class UserCustom {
@@ -51,24 +50,24 @@ class UserCustom {
   ], [
     Notification(
         People("John Doe", "assets/duolingo.png", Place.brussels, 150, true, Language.english,
-            "john@doe.com", ["I am looking for help with programming"], [], []),
+            "john@doe.com", ["I am looking for help with programming"], [], [],[],[]),
         DateTime.now().subtract(const Duration(hours: 1)),
         "You have a new friend request",
         NotificationType.friendRequest),
     Notification(
         People("Jane Smith", "assets/vic.png", Place.madrid, 50, false, Language.french,
-            "jane@smith.com", ["I love learning new languages"], [], []),
+            "jane@smith.com", ["I love learning new languages"], [], [],[],[]),
         DateTime.now().subtract(const Duration(hours: 2)),
         "Objectives fulfilled",
         NotificationType.objectivesFulfilled),
     Notification(
         People("Charlie Brown", "assets/dede.png", Place.budapest, 300, true, Language.spanish,
-            "charlie@brown.com", ["Need recommendations for books"], [], []),
+            "charlie@brown.com", ["Need recommendations for books"], [], [],[],[]),
         DateTime.now().subtract(const Duration(hours: 3)),
         "New worker arrived in the "
         "area",
         NotificationType.newWorkerArrived)
-  ]);
+  ],[],[]);
   static bool connected = false;
   static Language language = self.language;
   static String name = self.name;
@@ -88,7 +87,7 @@ class UserCustom {
         "bryce@noah.com",
         ["I lost my underwears, does anyone know how to get them back?", "I also lost my shoes"],
         [],
-        []),
+        [],[],[]),
     People("Victoria", "assets/duolingo.png", Place.brussels, 0, true, Language.french,
         "victoria@noah.com", [
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor "
@@ -97,16 +96,18 @@ class UserCustom {
           "irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla "
           "pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia "
           "deserunt mollit anim id est laborum."
-    ], [], []),
+    ], [], [],[],[]),
     People("Delphine", "assets/duolingo.png", Place.budapest, 0, true, Language.english,
-        "delphine@noah.com", [], [], []),
+        "delphine@noah.com", [], [], [],[],[]),
     People("Manu", "assets/duolingo.png", Place.brussels, 0, false, Language.french,
-        "manu@noah.com", ["I'm hungry, does someone have a pizza ?"], [], []),
+        "manu@noah.com", ["I'm hungry, does someone have a pizza ?"], [], [],[],[]),
     People("Machin", "assets/duolingo.png", Place.brussels, 0, false, Language.german,
-        "manu@noah.com", [], [], []),
+        "manu@noah.com", [], [], [],[],[]),
     People("machin", "assets/duolingo.png", Place.budapest, 0, false, Language.french,
-        "manu@noah.com", [], [], []),
+        "manu@noah.com", [], [], [],[],[]),
   ];
+  static List<String> earnedBadges = self.earnedBadges;
+  static List<String> achievedGoals = self.achievedGoals;
 
   static final UserCustom _singleton = UserCustom._internal();
   UserCustom._internal();
@@ -137,6 +138,7 @@ class UserCustom {
         return "German";
     }
   }
+
 }
 
 class Walk {
@@ -168,9 +170,11 @@ class People {
   List<String> problems;
   List<ActivityData> activity;
   List<Notification> notifications;
+  List<String> achievedGoals;
+  List<String> earnedBadges;
 
   People(this.name, this.picturePath, this.place, this.credits, this.isFriend, this.language,
-      this.email, this.problems, this.activity, this.notifications);
+      this.email, this.problems, this.activity, this.notifications, this.achievedGoals, this.earnedBadges);
 
   void addProblem(String problem) {
     problems.add(problem);
@@ -182,6 +186,13 @@ class People {
 
   void removeNotification(int index) {
     notifications.removeAt(index);
+  }
+  void addAchievedGoal(String goal) {
+    achievedGoals.add(goal);
+  }
+
+  void addEarnedBadge(String badge) {
+    earnedBadges.add(badge);
   }
 }
 

@@ -86,10 +86,10 @@ class _Problems extends State<Problems> {
                 child: Container(
                     height: 50,
                     width: 50,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         image: DecorationImage(
-                          image: AssetImage("assets/duolingo.png"),
+                          image: AssetImage(people.picturePath),
                           fit: BoxFit.cover,
                         )))),
           ]),
