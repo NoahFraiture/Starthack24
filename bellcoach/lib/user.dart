@@ -37,6 +37,9 @@ class UserCustom {
     people[0] = self;
   }
 
+  // Water drinking
+  static int water = 0;
+
   // green wall
   static List<ActivityData> activity = self.activity;
 
