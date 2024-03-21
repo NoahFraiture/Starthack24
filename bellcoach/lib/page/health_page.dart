@@ -35,7 +35,7 @@ class _HealthPage extends State<HealthPage> {
                     ),
                   ),
                   Image.asset(
-                    UserCustom.coachPath,
+                    UserCustom.coach(),
                     height: 206,
                     width: 206,
                   )
