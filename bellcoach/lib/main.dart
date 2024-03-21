@@ -1,6 +1,7 @@
 import 'package:bellcoach/placeholder.dart';
-import 'package:bellcoach/social.dart';
+import 'package:bellcoach/problems.dart';
 import 'package:bellcoach/top_bar_custom.dart';
+import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
 import 'package:bellcoach/bottom_bar_custom.dart';
 import 'package:bellcoach/colors.dart';
@@ -16,13 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: colorScheme,
-        useMaterial3: true,
-      ),
-      home: SocialPage(),
-    );
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: colorScheme,
+          useMaterial3: true,
+        ),
+        home: const Problems());
   }
 }
 

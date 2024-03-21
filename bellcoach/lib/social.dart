@@ -33,7 +33,7 @@ class _SocialPage extends State<SocialPage> {
               Expanded(
                 child: ListView(
                   children: [
-                    for (People friend in UserCustom.friends)
+                    for (People friend in UserCustom.people)
                       if (friend.isFriend) friendInfo(friend),
                   ],
                 ),
