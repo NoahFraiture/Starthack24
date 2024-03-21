@@ -299,7 +299,7 @@ class People {
   String name;
   final String picturePath;
   final Place place;
-  final int credits;
+  int credits;
   List<String> problems;
   List<ActivityData> activity;
   List<Notification> notifications;

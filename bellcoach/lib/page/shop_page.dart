@@ -129,6 +129,7 @@ class Shop {
     bool test = item.check(UserCustom.self.coachLvl);
     if (test) {
       UserCustom.credits -= item.credits; // If action was executed, substract credits
+      UserCustom.self.credits -= item.credits; // If action was executed, substract credits
     }
   }
 }
