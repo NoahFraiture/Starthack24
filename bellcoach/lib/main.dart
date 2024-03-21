@@ -260,7 +260,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Column(
                 children: <Widget>[
                   const Text(
-                    'Your Stats of the day',
+                    'Your Steps of the Day',
                     style: TextStyle(color: primaryFgColor, fontSize: 20)
                   ),
                   const SizedBox(height: 20.0),
@@ -269,8 +269,27 @@ class _MyHomePageState extends State<MyHomePage> {
                     color: Colors.blue,
                     backgroundColor: Colors.grey[300],
                   ),
-                  SizedBox(height: 10.0),
+                  const SizedBox(height: 10.0),
                   Text('${UserCustom.currentSteps} / 10000 steps'),
+                ],
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.fromLTRB(30.0, 20.0, 30.0, 20.0),
+              child: Column(
+                children: <Widget>[
+                  const Text(
+                    'Glass of Water Drunk',
+                    style: TextStyle(color: primaryFgColor, fontSize: 20),
+                  ),
+                  const SizedBox(height: 10.0),
+                  LinearProgressIndicator(
+                    value: min(UserCustom.water / 8, 1),  // we ensure value is between 0 and 1 with min
+                    color: Colors.blue,
+                    backgroundColor: Colors.grey[300],
+                  ),
+                  SizedBox(height: 10.0),
+                  Text('${UserCustom.water} / 8 glasses of water'),
                 ],
               ),
             ),

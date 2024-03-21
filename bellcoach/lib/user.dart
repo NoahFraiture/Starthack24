@@ -62,13 +62,13 @@ class UserCustom {
         "You have a new friend request",
         NotificationType.friendRequest),
     Notification(
-        People("Jane Smith", "assets/vic.png", Place.madrid, 50, false, Language.french,
+        People("Victoria Van Rillaer", "assets/vic.png", Place.madrid, 50, false, Language.french,
             "jane@smith.com", ["I love learning new languages"], [], [],[],[], Gender.girl),
         DateTime.now().subtract(const Duration(hours: 2)),
         "Objectives fulfilled",
         NotificationType.objectivesFulfilled),
     Notification(
-        People("Charlie Brown", "assets/dede.png", Place.budapest, 300, true, Language.spanish,
+        People("Delphine van Rossum", "assets/dede.png", Place.budapest, 300, true, Language.spanish,
             "charlie@brown.com", ["Need recommendations for books"], [], [],[],[], Gender.girl),
         DateTime.now().subtract(const Duration(hours: 3)),
         "New worker arrived in the "
