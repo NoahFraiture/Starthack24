@@ -1,23 +1,31 @@
 import 'dart:math';
 
 class UserCustom {
-  // sport information
-  static SportCategory sportCategory = SportCategory.muscle;
-
-  static String sportCategoryToString(SportCategory sportCategory) {
-    switch (sportCategory) {
-      case SportCategory.muscle:
-        return "Muscle";
-      case SportCategory.cardio:
-        return "Cardio";
-    }
+  // data
+  static DateTime lastActivity = DateTime.now();
+  static List<Sleep> sleeps = [];
+  static void addSleep(Sleep sleep) {
+    sleeps.add(sleep);
   }
 
-  static List<SportData> sportData = [];
-  static void addSportData(SportData sportData) {
-    UserCustom.sportData.add(sportData);
+  // Last date you walked to reset your steps every day
+  static DateTime lastDayWalked = DateTime.now();
+  static int currentSteps = 0;
+  static List<Walk> walks = [];
+  static void addWalk(Walk walk) {
+    walks.add(walk);
   }
 
+  // green wall
+  static List<ActivityData> activity = self.activity;
+
+  // message on the public wall
+  static List<String> problems = self.problems;
+  static void addSelfMessage(String message) {
+    self.problems.add(message);
+  }
+
+  // informations
   static final People self = People(
       "Self",
       "assets/duolingo.png",
@@ -34,8 +42,6 @@ class UserCustom {
   static String email = self.email;
   static int credits = self.credits;
   static Place place = self.place;
-  static List<ActivityData> activity = self.activity;
-  static List<String> problems = self.problems;
 
   static List<People> people = [
     self,
@@ -68,10 +74,6 @@ class UserCustom {
         "manu@noah.com", [], []),
   ];
 
-  static void addSelfMessage(String message) {
-    self.problems.add(message);
-  }
-
   static final UserCustom _singleton = UserCustom._internal();
   UserCustom._internal();
   factory UserCustom() {
@@ -101,6 +103,20 @@ class UserCustom {
         return "German";
     }
   }
+}
+
+class Walk {
+  final DateTime date;
+  final int steps;
+
+  Walk(this.date, this.steps);
+}
+
+class Sleep {
+  final DateTime date;
+  final Duration duration;
+
+  Sleep(this.date, this.duration);
 }
 
 enum Place { madrid, budapest, brussels }
