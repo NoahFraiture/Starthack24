@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    // TODO : change with poll at the beginning of the day
     List<ActivityData> data = [];
     for (int i = 0; i < 7 * 8; i++) {
       data.add(ActivityData(DateTime.now(), Random().nextInt(20)));

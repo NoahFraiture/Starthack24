@@ -1,6 +1,23 @@
 import 'dart:math';
 
 class UserCustom {
+  // sport information
+  static SportCategory sportCategory = SportCategory.muscle;
+
+  static String sportCategoryToString(SportCategory sportCategory) {
+    switch (sportCategory) {
+      case SportCategory.muscle:
+        return "Muscle";
+      case SportCategory.cardio:
+        return "Cardio";
+    }
+  }
+
+  static List<SportData> sportData = [];
+  static void addSportData(SportData sportData) {
+    UserCustom.sportData.add(sportData);
+  }
+
   // data
   static DateTime lastActivity = DateTime.now();
   static List<Sleep> sleeps = [];
