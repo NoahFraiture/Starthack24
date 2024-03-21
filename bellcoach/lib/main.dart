@@ -140,15 +140,15 @@ class _MyHomePageState extends State<MyHomePage> {
       }
       activityRecognition.activityStream.handleError((e) => log("error")).listen((e) {
         log(e.type.toString());
-        if (DateTime.now().difference(UserCustom.lastActivity) > const Duration(hours: 4) &&
-            (UserCustom.lastActivity.hour > 22 ||
-                UserCustom.lastActivity.hour < 6 ||
+        if (DateTime.now().difference(UserCustom.lastAwake) > const Duration(hours: 4) &&
+            (UserCustom.lastAwake.hour > 22 ||
+                UserCustom.lastAwake.hour < 6 ||
                 DateTime.now().hour < 6)) {
           UserCustom.addSleep(
-              Sleep(DateTime.now(), DateTime.now().difference(UserCustom.lastActivity)));
-          UserCustom.lastActivity = DateTime.now();
+              Sleep(DateTime.now(), DateTime.now().difference(UserCustom.lastAwake)));
+          UserCustom.lastAwake = DateTime.now();
         } else {
-          UserCustom.lastActivity = DateTime.now();
+          UserCustom.lastAwake = DateTime.now();
         }
       });
     });

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:bellcoach/page/notifications.dart';
 import 'package:bellcoach/page/problems_page.dart';
 import 'package:bellcoach/page/social_page.dart';
@@ -5,6 +7,7 @@ import 'package:bellcoach/page/sport_page.dart';
 import 'package:flutter/material.dart';
 
 import '../main.dart';
+import '../page/health_page.dart';
 
 class BottomBarCustom extends StatefulWidget {
   final PageID pageID;
@@ -25,7 +28,7 @@ class _BottomBarCustomState extends State<BottomBarCustom> {
           pageBuilder: (context, animation1, animation2) {
             return switch (intoPageID(value)) {
               PageID.running => const SportPage(),
-              PageID.health => const MyHomePage(),
+              PageID.health => const HealthPage(),
               PageID.factory => const Problems(),
               PageID.chat => const SocialPage(),
               PageID.notification => NotificationsPage(),

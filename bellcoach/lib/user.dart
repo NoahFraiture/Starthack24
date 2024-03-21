@@ -21,7 +21,7 @@ class UserCustom {
   }
 
   // data
-  static DateTime lastActivity = DateTime.now();
+  static DateTime lastAwake = DateTime.now();
   static List<Sleep> sleeps = [];
   static void addSleep(Sleep sleep) {
     sleeps.add(sleep);
