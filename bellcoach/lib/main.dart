@@ -1,3 +1,4 @@
+import 'package:bellcoach/page/breathing.dart';
 import 'package:bellcoach/placeholder.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
-  final int idPage = 0;
+  final int idPage = -1;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -204,15 +205,15 @@ class _MyHomePageState extends State<MyHomePage> {
       }
       activityRecognition.activityStream.handleError((e) => log("error")).listen((e) {
         log(e.type.toString());
-        if (DateTime.now().difference(UserCustom.lastActivity) > const Duration(hours: 4) &&
-            (UserCustom.lastActivity.hour > 22 ||
-                UserCustom.lastActivity.hour < 6 ||
+        if (DateTime.now().difference(UserCustom.lastAwake) > const Duration(hours: 4) &&
+            (UserCustom.lastAwake.hour > 22 ||
+                UserCustom.lastAwake.hour < 6 ||
                 DateTime.now().hour < 6)) {
           UserCustom.addSleep(
-              Sleep(DateTime.now(), DateTime.now().difference(UserCustom.lastActivity)));
-          UserCustom.lastActivity = DateTime.now();
+              Sleep(DateTime.now(), DateTime.now().difference(UserCustom.lastAwake)));
+          UserCustom.lastAwake = DateTime.now();
         } else {
-          UserCustom.lastActivity = DateTime.now();
+          UserCustom.lastAwake = DateTime.now();
         }
       });
     });
@@ -276,19 +277,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomBarCustom(
-        index: 0,
-        onTap: (int value) {
-          if (value != widget.idPage) {
-            Navigator.push(
-                context,
-                PageRouteBuilder(
-                    pageBuilder: (context, animation1, animation2) => const PlaceHolder(),
-                    transitionDuration: Duration.zero,
-                    reverseTransitionDuration: Duration.zero));
-          }
-        },
-      ),
+      bottomNavigationBar: const BottomBarCustom(pageID: PageID.home),
     );
   }
 }

@@ -20,10 +20,11 @@ class UserCustom {
   }
 
   // data
-  static DateTime lastActivity = DateTime.now();
+  static DateTime lastAwake = DateTime.now();
   static List<Sleep> sleeps = [];
   static void addSleep(Sleep sleep) {
     sleeps.add(sleep);
+    people[0] = self;
   }
 
   // Last date you walked to reset your steps every day
@@ -32,7 +33,11 @@ class UserCustom {
   static List<Walk> walks = [];
   static void addWalk(Walk walk) {
     walks.add(walk);
+    people[0] = self;
   }
+
+  // Water drinking
+  static int water = 0;
 
   // green wall
   static List<ActivityData> activity = self.activity;
@@ -41,6 +46,8 @@ class UserCustom {
   static List<String> problems = self.problems;
   static void addSelfMessage(String message) {
     self.problems.add(message);
+    self.name = name;
+    people[0] = self;
   }
 
   // informations
@@ -90,7 +97,7 @@ class UserCustom {
         true,
         Language.german,
         "bryce@noah.com",
-        ["I lost my underwears, does anyone know how to get them back?", "I also lost my shoes"],
+        ["I lost my stuffs, does anyone know how to get them back?", "I also lost my badge"],
         [],
         [],[],[], Gender.boy),
     People("Victoria", "assets/vic.png", Place.brussels, 0, true, Language.french,
@@ -172,7 +179,7 @@ class People {
   final Language language;
   final String email;
   bool isFriend;
-  final String name;
+  String name;
   final String picturePath;
   final Place place;
   final int credits;

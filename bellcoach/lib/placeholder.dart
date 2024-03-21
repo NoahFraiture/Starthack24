@@ -13,16 +13,9 @@ class PlaceHolder extends StatefulWidget {
 class _PlaceHolderState extends State<PlaceHolder> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: const Text("profile"),
-      bottomNavigationBar: BottomBarCustom(
-        index: 1,
-        onTap: (index) {
-          if (index != widget.idPage) {
-            Navigator.pop(context);
-          }
-        },
-      ),
+    return const Scaffold(
+      body: Text("profile"),
+      bottomNavigationBar: BottomBarCustom(pageID: PageID.invalid),
     );
   }
 }

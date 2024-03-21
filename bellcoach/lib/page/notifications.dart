@@ -1,4 +1,5 @@
 import 'package:bellcoach/user.dart';
+import 'package:bellcoach/widget/bottom_bar_custom.dart';
 import 'package:flutter/material.dart';
 
 import '../ressources/colors.dart';
@@ -67,9 +68,11 @@ class NotificationsPageState extends State<NotificationsPage> {
           );
         },
       ),
+      bottomNavigationBar: const BottomBarCustom(pageID: PageID.notification),
     );
   }
 }
+
 class Notification {
   final People sender;
   final DateTime notificationTime;
