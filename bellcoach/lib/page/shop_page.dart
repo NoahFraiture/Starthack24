@@ -33,11 +33,11 @@ class _ShopPage extends State<ShopPage> {
               Expanded(
                 child: ListView(
                   children: [
-                    for (Item item in Shop.items)
-                      if (item.check(UserCustom.self.coachLvl))
+                    for (int itemID=0; itemID < Shop.items.length; itemID++)
+                      if (Shop.items.elementAt(itemID).check(UserCustom.self.coachLvl) && !Shop.bought.contains(itemID))
                         InkWell(
-                          child: sellInfo(item),
-                          onTap: () => setState(() => item.action()),
+                          child: sellInfo(Shop.items.elementAt(itemID)),
+                          onTap: () => setState(() => Shop.buy(itemID)),
                         )
                   ],
                 ),
@@ -84,12 +84,11 @@ class Item {
 }
 
 class Shop {
-  static int toBuy = 0;
   static List<Item> items = [
-    Item("assets/duolingo.png", "Credit Boost", 50, (int a) {
+    Item("assets/steps.png", "Credit Boost", 50, (int a) {
       return true;
     }, () {}),
-    Item("assets/duolingo.png", "Special Badge", 300, (int b) {
+    Item("assets/steps.png", "Special Badge", 300, (int b) {
       return true;
     }, () {}),
     Item("assets/bellgroup.png", "Change Coach Gender", 100, (int a) {
@@ -110,6 +109,7 @@ class Shop {
       return false;
     }, () {
       UserCustom.self.coachLvl += 1;
+      UserCustom.coachLvl += 1;
     }),
     Item("assets/bellgroup.png", "Level up (2 to 3)", 400, (int a) {
       if (a == 2) {
@@ -118,16 +118,20 @@ class Shop {
       return false;
     }, () {
       UserCustom.self.coachLvl += 1;
+      UserCustom.coachLvl += 1;
     })
   ];
   static Set<int> bought = {};
 
   Shop();
 
-  static void buy() {
-    Item item = items[toBuy];
+  static void buy(itemID) {
+    Item item = items[itemID];
     bool test = item.check(UserCustom.self.coachLvl);
     if (test) {
+      item.action();
+      UserCustom.coachPath = UserCustom.getCoachPath();
+      UserCustom.coachIconPath = UserCustom.getCoachIconPath();
       UserCustom.credits -= item.credits; // If action was executed, substract credits
       UserCustom.self.credits -= item.credits; // If action was executed, substract credits
     }

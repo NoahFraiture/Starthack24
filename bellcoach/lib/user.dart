@@ -69,8 +69,8 @@ class UserCustom {
       [
         Notification(
             People(
-                "John Doe",
-                "assets/duolingo.png",
+                "Manu",
+                "assets/manu.png",
                 Place.brussels,
                 150,
                 true,
@@ -137,12 +137,13 @@ class UserCustom {
   static Gender coachGender = self.coachGender; // 1 or 2
   static int coachLvl = self.coachLvl; // 1 to 3
   static String coachPath = self.getCoachPath();
+  static String coachIconPath = self.getCoachIconPath();
 
   static List<People> people = [
     self,
     People(
         "Bryceuh",
-        "assets/duolingo.png",
+        "assets/bryce.png",
         Place.madrid,
         0,
         true,
@@ -205,7 +206,7 @@ class UserCustom {
         Gender.boy),
     People(
         "Machin",
-        "assets/duolingo.png",
+        "assets/dede.png",
         Place.brussels,
         0,
         false,
@@ -219,7 +220,7 @@ class UserCustom {
         Gender.girl),
     People(
         "machin",
-        "assets/duolingo.png",
+        "assets/noah.png",
         Place.budapest,
         0,
         false,
@@ -265,8 +266,12 @@ class UserCustom {
     }
   }
 
-  String getCoachPath() {
+  static String getCoachPath() {
     return self.getCoachPath();
+  }
+
+  static String getCoachIconPath() {
+    return self.getCoachIconPath();
   }
 }
 
@@ -348,6 +353,13 @@ class People {
       return "assets/Coach1-$coachLvl.gif";
     }
     return "assets/Coach2-$coachLvl.gif";
+  }
+
+  String getCoachIconPath() {
+    if (coachGender == Gender.boy) {
+      return "assets/Icone_coach1-$coachLvl.gif";
+    }
+    return "assets/Icone_coach2-$coachLvl.gif";
   }
 }
 

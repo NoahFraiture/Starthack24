@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../widget/top_bar_custom.dart';
 
 class ObjectivesBadgesPage extends StatelessWidget {
+  const ObjectivesBadgesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

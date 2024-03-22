@@ -1,4 +1,8 @@
 import 'package:bellcoach/page/chatbot_page.dart';
+import 'package:bellcoach/page/breathing.dart';
+import 'package:bellcoach/page/food.dart';
+import 'package:bellcoach/page/objectives_badges.dart';
+import 'package:bellcoach/placeholder.dart';
 import 'package:bellcoach/widget/top_bar_custom.dart';
 import 'package:bellcoach/user.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +15,7 @@ import 'package:flutter_activity_recognition/flutter_activity_recognition.dart';
 import 'package:dart_openai/dart_openai.dart';
 
 void main() {
-  OpenAI.apiKey = "OPEN_AI_KEY";
+  OpenAI.apiKey = "CHAT-GPT_KEY3";
   runApp(const MyApp());
 }
 

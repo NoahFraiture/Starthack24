@@ -3,6 +3,8 @@ import 'package:dart_openai/dart_openai.dart';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 
+import "../user.dart";
+
 class ChatBot extends StatefulWidget {
   const ChatBot({super.key});
 
@@ -54,8 +56,8 @@ class _ChatBotState extends State<ChatBot> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (!message.isUser)
-            const CircleAvatar(
-              child: Icon(Icons.computer),
+            CircleAvatar(
+              child: Image.asset(UserCustom.coachIconPath),
             ),
           const SizedBox(width: 10.0),
           Expanded(
