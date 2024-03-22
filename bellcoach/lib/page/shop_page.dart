@@ -85,13 +85,10 @@ class Item {
 
 class Shop {
   static List<Item> items = [
-    Item("assets/steps.png", "Credit Boost", 50, (int a) {
+    Item("assets/diamond.png", "Credit Boost", 50, (int a) {
       return true;
     }, () {}),
-    Item("assets/steps.png", "Special Badge", 300, (int b) {
-      return true;
-    }, () {}),
-    Item("assets/bellgroup.png", "Change Coach Gender", 100, (int a) {
+    Item("assets/swap.png", "Change Coach Gender", 100, (int a) {
       return true;
     }, () {
       if (UserCustom.self.coachGender == Gender.boy) {
@@ -102,7 +99,7 @@ class Shop {
         }
       }
     }),
-    Item("assets/bellgroup.png", "Level up (1 to 2)", 200, (int a) {
+    Item("assets/up1.png", "Level up coach (1 to 2)", 200, (int a) {
       if (a == 1) {
         return true;
       }
@@ -111,7 +108,7 @@ class Shop {
       UserCustom.self.coachLvl += 1;
       UserCustom.coachLvl += 1;
     }),
-    Item("assets/bellgroup.png", "Level up (2 to 3)", 400, (int a) {
+    Item("assets/up2.png", "Level up coach (2 to 3)", 400, (int a) {
       if (a == 2) {
         return true;
       }
